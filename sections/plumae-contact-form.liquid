@@ -1,0 +1,61 @@
+<section class="plumae-section plumae-contact" style="--contact-bg: {{ section.settings.background_color }};">
+  <div class="plumae-shell">
+    <div class="plumae-contact__layout">
+      <div>
+        <h2 class="plumae-section__heading">{{ section.settings.heading }}</h2>
+        {% if section.settings.text != blank %}<div class="plumae-rte">{{ section.settings.text }}</div>{% endif %}
+      </div>
+      <div>
+        {% form 'contact', class: 'plumae-contact__form' %}
+          {% if form.posted_successfully? %}
+            <p class="plumae-contact__success" tabindex="-1">{{ section.settings.success_message }}</p>
+          {% endif %}
+          {{ form.errors | default_errors }}
+          <div class="plumae-contact__row">
+            <div class="plumae-field">
+              <label for="ContactForm-name-{{ section.id }}">Naam</label>
+              <input id="ContactForm-name-{{ section.id }}" type="text" name="contact[name]" value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}" autocomplete="name">
+            </div>
+            <div class="plumae-field">
+              <label for="ContactForm-email-{{ section.id }}">E-mailadres</label>
+              <input id="ContactForm-email-{{ section.id }}" type="email" name="contact[email]" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}" autocomplete="email" required>
+            </div>
+          </div>
+          <div class="plumae-field">
+            <label for="ContactForm-phone-{{ section.id }}">Telefoonnummer <span aria-hidden="true">(optioneel)</span></label>
+            <input id="ContactForm-phone-{{ section.id }}" type="tel" name="contact[phone]" value="{% if form.phone %}{{ form.phone }}{% endif %}" autocomplete="tel">
+          </div>
+          <div class="plumae-field">
+            <label for="ContactForm-body-{{ section.id }}">Bericht</label>
+            <textarea id="ContactForm-body-{{ section.id }}" name="contact[body]" required>{{ form.body }}</textarea>
+          </div>
+          <div><button type="submit" class="plumae-button plumae-button--filled">{{ section.settings.button_label }}</button></div>
+        {% endform %}
+      </div>
+    </div>
+
+    {% if section.settings.show_collaboration %}
+      <details class="plumae-collab">
+        <summary>{{ section.settings.collaboration_heading }}</summary>
+        <div class="plumae-collab__body plumae-rte">{{ section.settings.collaboration_text }}</div>
+      </details>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Plumae: contact",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Kop", "default": "Neem contact op" },
+    { "type": "richtext", "id": "text", "label": "Toelichting", "default": "<p>Heb je een vraag over het spel, je bestelling of een samenwerking? Stuur ons een bericht.</p>" },
+    { "type": "text", "id": "button_label", "label": "Knoptekst", "default": "Verstuur bericht" },
+    { "type": "text", "id": "success_message", "label": "Bedanktekst", "default": "Bedankt. Je bericht is verzonden." },
+    { "type": "checkbox", "id": "show_collaboration", "label": "Uitklapbaar blok ‘Samenwerken?’ tonen", "default": true },
+    { "type": "text", "id": "collaboration_heading", "label": "Kop samenwerking", "default": "Samenwerken?" },
+    { "type": "richtext", "id": "collaboration_text", "label": "Tekst samenwerking", "default": "<p>We staan open voor verkooppunten, samenwerkingen, evenementen en andere passende ideeën. Beschrijf in het formulier kort wat je voor ogen hebt.</p>" },
+    { "type": "color", "id": "background_color", "label": "Achtergrondkleur", "default": "#F1EADA" }
+  ],
+  "presets": [{ "name": "Plumae: contact" }]
+}
+{% endschema %}

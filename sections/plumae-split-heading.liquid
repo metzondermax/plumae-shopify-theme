@@ -1,0 +1,22 @@
+<section class="plumae-section plumae-split-heading" style="--split-bg: {{ section.settings.background_color }}; --split-one: {{ section.settings.first_color }}; --split-two: {{ section.settings.second_color }};">
+  <div class="plumae-shell">
+    <h2>
+      <span class="plumae-split-heading__line plumae-split-heading__line--one">{{ section.settings.first_line }}</span>
+      <span class="plumae-split-heading__line plumae-split-heading__line--two">{{ section.settings.second_line }}</span>
+    </h2>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Plumae: dubbele kop",
+  "settings": [
+    { "type": "text", "id": "first_line", "label": "Eerste regel", "default": "Een kaartspel" },
+    { "type": "text", "id": "second_line", "label": "Tweede regel", "default": "maar dan net anders" },
+    { "type": "color", "id": "first_color", "label": "Kleur eerste regel", "default": "#475A61" },
+    { "type": "color", "id": "second_color", "label": "Kleur tweede regel", "default": "#C35943" },
+    { "type": "color", "id": "background_color", "label": "Achtergrondkleur", "default": "#F1EADA" }
+  ],
+  "presets": [{ "name": "Plumae: dubbele kop" }]
+}
+{% endschema %}

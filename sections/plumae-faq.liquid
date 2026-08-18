@@ -1,0 +1,52 @@
+<section class="plumae-section plumae-faq-section" style="--faq-bg: {{ section.settings.background_color }};">
+  <div class="plumae-shell">
+    {% if section.settings.heading != blank or section.settings.text != blank %}
+      <div class="plumae-section__intro">
+        {% if section.settings.heading != blank %}<h2 class="plumae-section__heading">{{ section.settings.heading }}</h2>{% endif %}
+        {% if section.settings.text != blank %}<div class="plumae-rte">{{ section.settings.text }}</div>{% endif %}
+      </div>
+    {% endif %}
+    <div class="plumae-faq">
+      {% for block in section.blocks %}
+        <details {{ block.shopify_attributes }}{% if block.settings.open_by_default %} open{% endif %}>
+          <summary>{{ block.settings.question }}</summary>
+          <div class="plumae-faq__answer plumae-rte">{{ block.settings.answer }}</div>
+        </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Plumae: FAQ",
+  "max_blocks": 12,
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Kop boven vragen", "default": "Veelgestelde vragen" },
+    { "type": "richtext", "id": "text", "label": "Korte toelichting", "default": "<p>Staat je vraag er niet tussen? Neem dan contact met ons op.</p>" },
+    { "type": "color", "id": "background_color", "label": "Achtergrondkleur", "default": "#F1EADA" }
+  ],
+  "blocks": [
+    {
+      "type": "question",
+      "name": "Vraag",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Vraag", "default": "Wat zit er in de basisset?" },
+        { "type": "richtext", "id": "answer", "label": "Antwoord", "default": "<p>Vul hier het antwoord in.</p>" },
+        { "type": "checkbox", "id": "open_by_default", "label": "Standaard uitgeklapt", "default": false }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "Plumae: FAQ",
+    "blocks": [
+      { "type": "question", "settings": { "question": "Hoe werkt het spel?" } },
+      { "type": "question", "settings": { "question": "Voor hoeveel spelers is het geschikt?" } },
+      { "type": "question", "settings": { "question": "Kan ik uitbreidingssets los gebruiken?" } },
+      { "type": "question", "settings": { "question": "Hoe snel wordt mijn bestelling verzonden?" } },
+      { "type": "question", "settings": { "question": "Kan ik mijn bestelling retourneren?" } },
+      { "type": "question", "settings": { "question": "Waar vind ik de recepten?" } }
+    ]
+  }]
+}
+{% endschema %}

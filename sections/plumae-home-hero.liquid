@@ -1,0 +1,69 @@
+{% liquid
+  assign has_custom_image = false
+  assign primary_destination = section.settings.primary_link
+  if primary_destination == blank and section.settings.primary_product != blank
+    assign primary_destination = section.settings.primary_product.url
+  endif
+  if primary_destination == blank
+    assign primary_destination = routes.all_products_collection_url
+  endif
+  if section.settings.image != blank
+    assign has_custom_image = true
+    assign hero_alt = section.settings.image.alt | default: section.settings.heading
+  endif
+%}
+
+<section
+  class="plumae-hero"
+  style="--hero-bg: {{ section.settings.background_color }}; --hero-text: {{ section.settings.text_color }}; --hero-height: {{ section.settings.height }}px; --hero-position: {{ section.settings.image_position }}; --hero-overlay: {{ section.settings.overlay_opacity | divided_by: 100.0 }};"
+>
+  <div class="plumae-hero__media{% unless has_custom_image %} plumae-hero__media--cutout{% endunless %}">
+    {% if has_custom_image %}
+      {{ section.settings.image | image_url: width: 2400 | image_tag: loading: 'eager', fetchpriority: 'high', widths: '750, 1100, 1500, 2000, 2400', sizes: '100vw', alt: hero_alt }}
+    {% else %}
+      <img src="{{ 'plumae-basisbox-placeholder.png' | asset_url }}" width="1280" height="1280" loading="eager" fetchpriority="high" alt="Voorbeeldafbeelding van de basisset">
+    {% endif %}
+  </div>
+  <div class="plumae-hero__overlay"></div>
+  <div class="plumae-shell plumae-hero__content">
+    {% if section.settings.eyebrow != blank %}<p class="plumae-hero__eyebrow">{{ section.settings.eyebrow }}</p>{% endif %}
+    <h1 class="plumae-hero__title">{{ section.settings.heading }}</h1>
+    {% if section.settings.text != blank %}<div class="plumae-hero__text plumae-rte">{{ section.settings.text }}</div>{% endif %}
+    <div class="plumae-hero__actions">
+      {% if section.settings.primary_label != blank %}
+        <a class="plumae-button plumae-button--filled" href="{{ primary_destination }}">{{ section.settings.primary_label }}</a>
+      {% endif %}
+      {% if section.settings.secondary_label != blank %}
+        <a class="plumae-button plumae-button--outline" href="{{ section.settings.secondary_link | default: '/pages/over-ons' }}">{{ section.settings.secondary_label }}</a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Plumae: homepageheader",
+  "tag": "section",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Grote productfoto" },
+    { "type": "select", "id": "image_position", "label": "Positie foto", "default": "center", "options": [
+      { "value": "left", "label": "Links" },
+      { "value": "center", "label": "Midden" },
+      { "value": "right", "label": "Rechts" }
+    ]},
+    { "type": "text", "id": "eyebrow", "label": "Kleine bovenregel", "default": "Wat eten we vandaag?" },
+    { "type": "text", "id": "heading", "label": "Grote kop", "default": "Een weekmenu in vijf minuten" },
+    { "type": "richtext", "id": "text", "label": "Korte toelichting", "default": "<p>Een snel en speels kaartspel waarmee je samen beslist wat er deze week op tafel komt.</p>" },
+    { "type": "text", "id": "primary_label", "label": "Tekst eerste knop", "default": "Shop nu" },
+    { "type": "product", "id": "primary_product", "label": "Product voor eerste knop" },
+    { "type": "url", "id": "primary_link", "label": "Andere link eerste knop (optioneel)" },
+    { "type": "text", "id": "secondary_label", "label": "Tekst tweede knop", "default": "Ontdek meer" },
+    { "type": "url", "id": "secondary_link", "label": "Link tweede knop" },
+    { "type": "color", "id": "background_color", "label": "Achtergrondkleur", "default": "#475A61" },
+    { "type": "color", "id": "text_color", "label": "Tekstkleur", "default": "#F1EADA" },
+    { "type": "range", "id": "overlay_opacity", "label": "Donkerte over foto", "min": 0, "max": 100, "step": 5, "unit": "%", "default": 70 },
+    { "type": "range", "id": "height", "label": "Hoogte op desktop", "min": 480, "max": 900, "step": 20, "unit": "px", "default": 680 }
+  ],
+  "presets": [{ "name": "Plumae: homepageheader" }]
+}
+{% endschema %}

@@ -1,0 +1,71 @@
+<section class="plumae-story" style="--story-page-bg: {{ section.settings.background_color }};">
+  {% for block in section.blocks %}
+    {% assign story_alt = block.settings.image.alt | default: block.settings.heading %}
+    <article
+      class="plumae-story__row {% if block.settings.layout == 'center' %}plumae-story__row--center{% elsif block.settings.image_position == 'right' %}plumae-story__row--right{% endif %}"
+      style="--row-bg: {{ block.settings.background_color }}; --row-text: {{ block.settings.text_color }};"
+      {{ block.shopify_attributes }}
+    >
+      <div class="plumae-shell plumae-story__inner">
+        {% unless block.settings.layout == 'center' %}
+          <div class="plumae-story__media">
+            {% if block.settings.image != blank %}
+              {{ block.settings.image | image_url: width: 1400 | image_tag: loading: 'lazy', widths: '500, 800, 1100, 1400', sizes: '(min-width: 990px) 50vw, 100vw', alt: story_alt }}
+            {% else %}
+              <div class="plumae-story__media--placeholder">Plaats hier later een foto</div>
+            {% endif %}
+          </div>
+        {% endunless %}
+        <div class="plumae-story__content">
+          <h2 class="plumae-story__title">{{ block.settings.heading }}</h2>
+          {% if block.settings.text != blank %}<div class="plumae-rte">{{ block.settings.text }}</div>{% endif %}
+          {% if block.settings.button_label != blank %}
+            <p><a class="plumae-button plumae-button--outline" href="{{ block.settings.button_link | default: '#' }}">{{ block.settings.button_label }}</a></p>
+          {% endif %}
+        </div>
+      </div>
+    </article>
+  {% endfor %}
+</section>
+
+{% schema %}
+{
+  "name": "Plumae: verhaalblokken",
+  "max_blocks": 8,
+  "settings": [
+    { "type": "color", "id": "background_color", "label": "Achtergrond achter de blokken", "default": "#F1EADA" }
+  ],
+  "blocks": [
+    {
+      "type": "story",
+      "name": "Verhaalblok",
+      "settings": [
+        { "type": "select", "id": "layout", "label": "Indeling", "default": "split", "options": [
+          { "value": "center", "label": "Alleen tekst in het midden" },
+          { "value": "split", "label": "Foto en tekst" }
+        ]},
+        { "type": "select", "id": "image_position", "label": "Positie foto", "default": "left", "options": [
+          { "value": "left", "label": "Links" },
+          { "value": "right", "label": "Rechts" }
+        ]},
+        { "type": "image_picker", "id": "image", "label": "Foto" },
+        { "type": "text", "id": "heading", "label": "Kop", "default": "Ons verhaal" },
+        { "type": "richtext", "id": "text", "label": "Tekst", "default": "<p>Vertel hier wie jullie zijn, waarom het spel is gemaakt en wat jullie belangrijk vinden.</p>" },
+        { "type": "text", "id": "button_label", "label": "Knoptekst (optioneel)" },
+        { "type": "url", "id": "button_link", "label": "Knoplink" },
+        { "type": "color", "id": "background_color", "label": "Achtergrondkleur", "default": "#F1EADA" },
+        { "type": "color", "id": "text_color", "label": "Tekstkleur", "default": "#475A61" }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "Plumae: verhaalblokken",
+    "blocks": [
+      { "type": "story", "settings": { "layout": "center", "heading": "Waarom dit spel?", "background_color": "#F1EADA", "text_color": "#475A61" } },
+      { "type": "story", "settings": { "layout": "split", "image_position": "left", "heading": "Van idee naar kaartspel", "background_color": "#C35943", "text_color": "#F1EADA" } },
+      { "type": "story", "settings": { "layout": "split", "image_position": "right", "heading": "Snel kiezen, samen eten", "background_color": "#475A61", "text_color": "#F1EADA" } },
+      { "type": "story", "settings": { "layout": "split", "image_position": "left", "heading": "Wat er nog aankomt", "background_color": "#F1EADA", "text_color": "#475A61" } }
+    ]
+  }]
+}
+{% endschema %}
