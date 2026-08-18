@@ -26,19 +26,54 @@
   </div>
   <div class="plumae-hero__overlay"></div>
   <div class="plumae-shell plumae-hero__content">
-    {% if section.settings.eyebrow != blank %}<p class="plumae-hero__eyebrow">{{ section.settings.eyebrow }}</p>{% endif %}
-    <h1 class="plumae-hero__title">{{ section.settings.heading }}</h1>
-    {% if section.settings.text != blank %}<div class="plumae-hero__text plumae-rte">{{ section.settings.text }}</div>{% endif %}
-    <div class="plumae-hero__actions">
-      {% if section.settings.primary_label != blank %}
-        <a class="plumae-button plumae-button--filled" href="{{ primary_destination }}">{{ section.settings.primary_label }}</a>
-      {% endif %}
-      {% if section.settings.secondary_label != blank %}
-        <a class="plumae-button plumae-button--outline" href="{{ section.settings.secondary_link | default: '/pages/over-ons' }}">{{ section.settings.secondary_label }}</a>
-      {% endif %}
+    <div class="plumae-hero__copy">
+      {% if section.settings.eyebrow != blank %}<p class="plumae-hero__eyebrow">{{ section.settings.eyebrow }}</p>{% endif %}
+      <h1 class="plumae-hero__title">{{ section.settings.heading }}</h1>
+      {% if section.settings.text != blank %}<div class="plumae-hero__text plumae-rte">{{ section.settings.text }}</div>{% endif %}
+      <div class="plumae-hero__actions">
+        {% if section.settings.primary_label != blank %}
+          <a class="plumae-button plumae-button--filled" href="{{ primary_destination }}">{{ section.settings.primary_label }}</a>
+        {% endif %}
+        {% if section.settings.secondary_label != blank %}
+          <a class="plumae-button plumae-button--outline" href="{{ section.settings.secondary_link | default: '/pages/over-ons' }}">{{ section.settings.secondary_label }}</a>
+        {% endif %}
+      </div>
     </div>
   </div>
 </section>
+
+{% style %}
+  @media (min-width: 990px) {
+    #shopify-section-{{ section.id }} .plumae-hero__content {
+      max-width: none;
+      width: min(1180px, calc(100% - 40px));
+    }
+
+    #shopify-section-{{ section.id }} .plumae-hero__copy {
+      width: min(44%, 510px);
+      text-align: left;
+    }
+
+    #shopify-section-{{ section.id }} .plumae-hero__title,
+    #shopify-section-{{ section.id }} .plumae-hero__text {
+      max-width: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .plumae-hero__title {
+      font-size: clamp(2.8rem, 5vw, 5.2rem);
+    }
+
+    #shopify-section-{{ section.id }} .plumae-hero__overlay {
+      background: linear-gradient(
+        90deg,
+        rgba(71, 90, 97, var(--hero-overlay, .86)) 0%,
+        rgba(71, 90, 97, .72) 36%,
+        rgba(71, 90, 97, .20) 56%,
+        rgba(71, 90, 97, .04) 76%
+      );
+    }
+  }
+{% endstyle %}
 
 {% schema %}
 {
