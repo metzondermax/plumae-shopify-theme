@@ -1,0 +1,12 @@
+<section
+  class="plumae-app-download"
+  style="--app-bg: {{ section.settings.background_color }}; --app-text: {{ section.settings.text_color }};"
+>
+  <div class="plumae-shell plumae-app-download__inner">
+    {% if section.settings.title != blank %}
+      <h1 class="plumae-app-download__title">{{ section.settings.title }}</h1>
+    {% endif %}
+
+    {% if section.settings.image != blank %}
+      <div class="plumae-app-download__media">
+        {{ section.settings.image | image_url: width: 2000 | image_tag: loading: 'e
