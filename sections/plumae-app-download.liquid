@@ -9,4 +9,144 @@
 
     {% if section.settings.image != blank %}
       <div class="plumae-app-download__media">
-        {{ section.settings.image | image_url: width: 2000 | image_tag: loading: 'e
+        {{
+          section.settings.image
+          | image_url: width: 1800
+          | image_tag:
+            loading: 'eager',
+            fetchpriority: 'high',
+            widths: '600, 900, 1200, 1600, 1800',
+            sizes: '(max-width: 749px) calc(100vw - 28px), 900px',
+            alt: section.settings.image.alt
+        }}
+      </div>
+    {% endif %}
+
+    <div class="plumae-app-download__copy">
+      {% if section.settings.heading != blank %}
+        <h2 class="plumae-app-download__heading">{{ section.settings.heading }}</h2>
+      {% endif %}
+
+      {% if section.settings.text != blank %}
+        <div class="plumae-app-download__text plumae-rte">{{ section.settings.text }}</div>
+      {% endif %}
+
+      <div class="plumae-app-download__actions">
+        {% if section.settings.android_link != blank %}
+          <a class="plumae-button plumae-button--filled plumae-app-download__button" href="{{ section.settings.android_link }}">
+            {{ section.settings.android_label }}
+          </a>
+        {% endif %}
+
+        {% if section.settings.ios_link != blank %}
+          <a class="plumae-button plumae-button--filled plumae-app-download__button" href="{{ section.settings.ios_link }}">
+            {{ section.settings.ios_label }}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% style %}
+  .plumae-app-download {
+    background: var(--app-bg, #f1eada);
+    color: var(--app-text, #475a61);
+    padding: clamp(44px, 7vw, 84px) 0 clamp(56px, 8vw, 96px);
+  }
+
+  .plumae-app-download__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .plumae-app-download__title {
+    margin: 0 0 clamp(28px, 4vw, 42px);
+    color: inherit;
+    font-size: clamp(2.25rem, 5vw, 4.5rem);
+    line-height: 1;
+  }
+
+  .plumae-app-download__media {
+    width: min(900px, 100%);
+    margin: 0 auto clamp(30px, 4vw, 44px);
+  }
+
+  .plumae-app-download__media img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 18px;
+  }
+
+  .plumae-app-download__copy {
+    width: min(680px, 100%);
+  }
+
+  .plumae-app-download__heading {
+    margin: 0 0 14px;
+    color: inherit;
+    font-size: clamp(1.75rem, 4vw, 3rem);
+    line-height: 1.05;
+  }
+
+  .plumae-app-download__text {
+    font-size: clamp(1rem, 1.4vw, 1.15rem);
+    line-height: 1.6;
+  }
+
+  .plumae-app-download__actions {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 30px;
+  }
+
+  .plumae-app-download__button {
+    min-width: 220px;
+    min-height: 58px;
+    padding-inline: 30px;
+    font-size: 1.05rem;
+  }
+
+  @media (max-width: 749px) {
+    .plumae-app-download {
+      padding-top: 38px;
+    }
+
+    .plumae-app-download__media img {
+      border-radius: 12px;
+    }
+
+    .plumae-app-download__actions {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .plumae-app-download__button {
+      width: 100%;
+    }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Plumae: app downloaden",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Paginatitel", "default": "Download de app!" },
+    { "type": "image_picker", "id": "image", "label": "App afbeelding" },
+    { "type": "text", "id": "heading", "label": "Titel onder afbeelding", "default": "Wat Eten We Vandaag?" },
+    { "type": "richtext", "id": "text", "label": "Tekst", "default": "<p>Scan je gerechtkaarten en krijg toegang tot recepten, maak een digitaal weekmenu en laat automatisch je boodschappenlijstje genereren!</p>" },
+    { "type": "text", "id": "android_label", "label": "Android knoptekst", "default": "Download voor Android" },
+    { "type": "url", "id": "android_link", "label": "Android link" },
+    { "type": "text", "id": "ios_label", "label": "iOS knoptekst", "default": "Download voor iOS" },
+    { "type": "url", "id": "ios_link", "label": "iOS link" },
+    { "type": "color", "id": "background_color", "label": "Achtergrondkleur", "default": "#F1EADA" },
+    { "type": "color", "id": "text_color", "label": "Tekstkleur", "default": "#475A61" }
+  ],
+  "presets": [{ "name": "Plumae: app downloaden" }]
+}
+{% endschema %}
