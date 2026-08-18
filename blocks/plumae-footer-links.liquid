@@ -1,0 +1,34 @@
+<nav class="plumae-footer-links" aria-label="Snelle navigatie" {{ block.shopify_attributes }}>
+  {% for i in (1..6) %}
+    {% liquid
+      assign label_key = 'label_' | append: i
+      assign link_key = 'link_' | append: i
+      assign label = block.settings[label_key]
+      assign link = block.settings[link_key]
+    %}
+    {% if label != blank %}
+      <a href="{{ link | default: '#' }}">{{ label }}</a>
+    {% endif %}
+  {% endfor %}
+</nav>
+
+{% schema %}
+{
+  "name": "Plumae: footerlinks",
+  "tag": null,
+  "settings": [
+    { "type": "text", "id": "label_1", "label": "Linktekst 1", "default": "Producten" },
+    { "type": "url", "id": "link_1", "label": "Link 1" },
+    { "type": "text", "id": "label_2", "label": "Linktekst 2", "default": "Over ons" },
+    { "type": "url", "id": "link_2", "label": "Link 2" },
+    { "type": "text", "id": "label_3", "label": "Linktekst 3", "default": "Veelgestelde vragen" },
+    { "type": "url", "id": "link_3", "label": "Link 3" },
+    { "type": "text", "id": "label_4", "label": "Linktekst 4", "default": "Contact" },
+    { "type": "url", "id": "link_4", "label": "Link 4" },
+    { "type": "text", "id": "label_5", "label": "Linktekst 5", "default": "Privacyverklaring" },
+    { "type": "url", "id": "link_5", "label": "Link 5" },
+    { "type": "text", "id": "label_6", "label": "Linktekst 6", "default": "Voorwaarden" },
+    { "type": "url", "id": "link_6", "label": "Link 6" }
+  ]
+}
+{% endschema %}
