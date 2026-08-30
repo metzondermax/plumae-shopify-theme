@@ -120,6 +120,41 @@
     {% endfor %}
   </product-component>
 
+  {% if request.page_type == 'product' %}
+    {% liquid
+      assign safety_variant = product.selected_or_first_available_variant
+      assign business_page = pages['bedrijfsgegevens']
+      assign safety_product_type = product.type | default: 'Kaartspel'
+    %}
+    <div class="plumae-product-safety-wrap">
+      <details class="plumae-product-safety">
+        <summary>Productveiligheid</summary>
+        <div class="plumae-product-safety__body">
+          <div class="plumae-product-safety__product">
+            <p><strong>Product</strong><br>{{ product.title }}</p>
+            <p><strong>Type</strong><br>{{ safety_product_type }}</p>
+            {% if safety_variant.sku != blank %}
+              <p><strong>Artikelnummer</strong><br>{{ safety_variant.sku }}</p>
+            {% endif %}
+            <p><strong>Leeftijdsindicatie</strong><br>3+</p>
+          </div>
+
+          <div class="plumae-product-safety__manufacturer">
+            <p><strong>Fabrikantgegevens</strong></p>
+            {% if business_page != blank and business_page.content != blank %}
+              <div class="rte">{{ business_page.content }}</div>
+            {% else %}
+              <p>
+                Plumae Kaartspellen C.V.<br>
+                <a href="/pages/bedrijfsgegevens">Bekijk de volledige bedrijfsgegevens</a>
+              </p>
+            {% endif %}
+          </div>
+        </div>
+      </details>
+    </div>
+  {% endif %}
+
   {{ additional_blocks }}
 </div>
 
@@ -151,6 +186,75 @@
     height: 100%;
   }
 
+  .plumae-product-safety-wrap {
+    grid-column: 2;
+    width: 100%;
+    margin-top: 30px;
+  }
+
+  .plumae-product-safety {
+    width: 100%;
+    border-top: 1px solid rgba(71, 90, 97, 0.28);
+    border-bottom: 1px solid rgba(71, 90, 97, 0.28);
+    color: #475a61;
+  }
+
+  .plumae-product-safety summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px 4px;
+    cursor: pointer;
+    list-style: none;
+    font-weight: 700;
+  }
+
+  .plumae-product-safety summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .plumae-product-safety summary::after {
+    content: '+';
+    flex: 0 0 auto;
+    width: 28px;
+    height: 28px;
+    display: grid;
+    place-items: center;
+    border: 1px solid currentColor;
+    border-radius: 50%;
+    line-height: 1;
+  }
+
+  .plumae-product-safety[open] summary::after {
+    content: '–';
+  }
+
+  .plumae-product-safety__body {
+    padding: 0 4px 24px;
+    font-size: 0.95em;
+  }
+
+  .plumae-product-safety__body p {
+    margin-block: 0 12px;
+  }
+
+  .plumae-product-safety__product {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2px 24px;
+    margin-bottom: 16px;
+  }
+
+  .plumae-product-safety__manufacturer {
+    padding-top: 16px;
+    border-top: 1px solid rgba(71, 90, 97, 0.18);
+  }
+
+  .plumae-product-safety a {
+    color: #c35943;
+  }
+
   /* Mobile styles */
   @media screen and (max-width: 749px) {
     .product-information__media {
@@ -159,6 +263,15 @@
 
     .product-details {
       grid-column: 2 / 3;
+    }
+
+    .plumae-product-safety-wrap {
+      grid-column: 2 / 3;
+      margin-top: 22px;
+    }
+
+    .plumae-product-safety__product {
+      grid-template-columns: 1fr;
     }
   }
 
