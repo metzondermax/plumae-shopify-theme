@@ -34,14 +34,51 @@
       </div>
     </div>
 
-    {% if section.settings.show_collaboration %}
-      <details class="plumae-collab">
-        <summary>{{ section.settings.collaboration_heading }}</summary>
-        <div class="plumae-collab__body plumae-rte">{{ section.settings.collaboration_text }}</div>
-      </details>
-    {% endif %}
+    <div class="plumae-contact__accordions">
+      {% if section.settings.show_returns %}
+        <details class="plumae-collab plumae-returns" id="retouren">
+          <summary>{{ section.settings.returns_heading }}</summary>
+          <div class="plumae-collab__body plumae-rte">
+            {{ section.settings.returns_text }}
+            <div class="plumae-returns__actions">
+              <a class="plumae-button plumae-button--filled" href="{{ routes.account_url }}">{{ section.settings.returns_button_label }}</a>
+              {% if shop.refund_policy != blank %}
+                <a class="plumae-returns__policy" href="{{ shop.refund_policy.url }}">Bekijk de retourvoorwaarden</a>
+              {% endif %}
+            </div>
+          </div>
+        </details>
+      {% endif %}
+
+      {% if section.settings.show_collaboration %}
+        <details class="plumae-collab">
+          <summary>{{ section.settings.collaboration_heading }}</summary>
+          <div class="plumae-collab__body plumae-rte">{{ section.settings.collaboration_text }}</div>
+        </details>
+      {% endif %}
+    </div>
   </div>
 </section>
+
+{% stylesheet %}
+  .plumae-contact__accordions .plumae-collab + .plumae-collab {
+    margin-top: 0;
+    border-top: 0;
+  }
+
+  .plumae-returns__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px 22px;
+    margin-top: 22px;
+  }
+
+  .plumae-returns__policy {
+    color: var(--plumae-rust);
+    font-weight: 700;
+  }
+{% endstylesheet %}
 
 {% schema %}
 {
@@ -51,6 +88,10 @@
     { "type": "richtext", "id": "text", "label": "Toelichting", "default": "<p>Heb je een vraag over het spel, je bestelling of een samenwerking? Stuur ons een bericht.</p>" },
     { "type": "text", "id": "button_label", "label": "Knoptekst", "default": "Verstuur bericht" },
     { "type": "text", "id": "success_message", "label": "Bedanktekst", "default": "Bedankt. Je bericht is verzonden." },
+    { "type": "checkbox", "id": "show_returns", "label": "Uitklapbaar blok voor retouren tonen", "default": true },
+    { "type": "text", "id": "returns_heading", "label": "Kop retouren", "default": "Retourneren of annuleren?" },
+    { "type": "richtext", "id": "returns_text", "label": "Tekst retouren", "default": "<p>Wil je een bestelling annuleren of retourneren? Open je klantaccount en kies de betreffende bestelling. Als de bestelling volgens de ingestelde regels in aanmerking komt, kun je daar direct een aanvraag starten.</p>" },
+    { "type": "text", "id": "returns_button_label", "label": "Knoptekst retouren", "default": "Retour of annulering starten" },
     { "type": "checkbox", "id": "show_collaboration", "label": "Uitklapbaar blok ‘Samenwerken?’ tonen", "default": true },
     { "type": "text", "id": "collaboration_heading", "label": "Kop samenwerking", "default": "Samenwerken?" },
     { "type": "richtext", "id": "collaboration_text", "label": "Tekst samenwerking", "default": "<p>We staan open voor verkooppunten, samenwerkingen, evenementen en andere passende ideeën. Beschrijf in het formulier kort wat je voor ogen hebt.</p>" },
