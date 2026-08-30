@@ -1,0 +1,131 @@
+{% liquid
+  assign safety_product = closest.product
+  assign safety_variant = safety_product.selected_or_first_available_variant
+  assign business_page = pages['bedrijfsgegevens']
+  assign safety_product_type = safety_product.type | default: 'Kaartspel'
+%}
+
+<details class="plumae-product-safety" {{ block.shopify_attributes }}>
+  <summary>{{ block.settings.heading }}</summary>
+  <div class="plumae-product-safety__body">
+    <div class="plumae-product-safety__product">
+      <p><strong>Product</strong><br>{{ safety_product.title }}</p>
+      <p><strong>Type</strong><br>{{ safety_product_type }}</p>
+      {% if safety_variant.sku != blank %}
+        <p><strong>Artikelnummer</strong><br>{{ safety_variant.sku }}</p>
+      {% endif %}
+      {% if block.settings.age != blank %}
+        <p><strong>Leeftijdsindicatie</strong><br>{{ block.settings.age }}</p>
+      {% endif %}
+    </div>
+
+    <div class="plumae-product-safety__manufacturer">
+      <p><strong>Fabrikantgegevens</strong></p>
+      {% if business_page != blank and business_page.content != blank %}
+        <div class="rte">{{ business_page.content }}</div>
+      {% else %}
+        <p>
+          Plumae Kaartspellen C.V.<br>
+          <a href="/pages/bedrijfsgegevens">Bekijk de volledige bedrijfsgegevens</a>
+        </p>
+      {% endif %}
+    </div>
+  </div>
+</details>
+
+{% stylesheet %}
+  .plumae-product-safety {
+    width: 100%;
+    border-top: 1px solid rgba(71, 90, 97, 0.28);
+    border-bottom: 1px solid rgba(71, 90, 97, 0.28);
+    color: #475a61;
+  }
+
+  .plumae-product-safety summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 18px 4px;
+    cursor: pointer;
+    list-style: none;
+    font-weight: 700;
+  }
+
+  .plumae-product-safety summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .plumae-product-safety summary::after {
+    content: '+';
+    flex: 0 0 auto;
+    width: 28px;
+    height: 28px;
+    display: grid;
+    place-items: center;
+    border: 1px solid currentColor;
+    border-radius: 50%;
+    line-height: 1;
+  }
+
+  .plumae-product-safety[open] summary::after {
+    content: '–';
+  }
+
+  .plumae-product-safety__body {
+    padding: 0 4px 22px;
+    font-size: 0.95em;
+  }
+
+  .plumae-product-safety__body p {
+    margin-block: 0 12px;
+  }
+
+  .plumae-product-safety__product {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2px 24px;
+    margin-bottom: 16px;
+  }
+
+  .plumae-product-safety__manufacturer {
+    padding-top: 16px;
+    border-top: 1px solid rgba(71, 90, 97, 0.18);
+  }
+
+  .plumae-product-safety a {
+    color: #c35943;
+  }
+
+  @media screen and (max-width: 749px) {
+    .plumae-product-safety__product {
+      grid-template-columns: 1fr;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Plumae: productveiligheid",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Kop",
+      "default": "Productveiligheid"
+    },
+    {
+      "type": "text",
+      "id": "age",
+      "label": "Leeftijdsindicatie",
+      "default": "3+"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Plumae: productveiligheid"
+    }
+  ]
+}
+{% endschema %}
