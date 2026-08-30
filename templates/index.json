@@ -12,6 +12,7 @@
     "plumae_hero": {
       "type": "plumae-home-hero",
       "settings": {
+        "image": "shopify://shop_images/basisset_3d_e2947c8a-7167-4929-a452-8d773504c1d4.png",
         "image_position": "right",
         "eyebrow": "Wat eten we vandaag?",
         "heading": "Een weekmenu in vijf minuten",
