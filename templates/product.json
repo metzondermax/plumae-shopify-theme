@@ -301,6 +301,14 @@
                 "padding-inline-end": 0
               },
               "blocks": {}
+            },
+            "plumae_product_safety": {
+              "type": "plumae-product-safety",
+              "settings": {
+                "heading": "Productveiligheid",
+                "age": "3+"
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -308,7 +316,8 @@
             "divider_VJhene",
             "variant_picker_R3rGDr",
             "buy_buttons_eYQEYi",
-            "text_aEtTtq"
+            "text_aEtTtq",
+            "plumae_product_safety"
           ]
         }
       },
