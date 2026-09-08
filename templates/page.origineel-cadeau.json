@@ -1,0 +1,128 @@
+{
+  "sections": {
+    "banner": {
+      "type": "plumae-page-banner",
+      "settings": {
+        "heading": "Een origineel cadeau voor mensen die nooit weten wat ze moeten eten",
+        "text": "<p>Voor stellen, gezinnen, foodies, eetclubs en dinerclubs die van lekker eten én een beetje gemak houden.</p>",
+        "background_color": "#c35943",
+        "text_color": "#f1eada",
+        "overlay_opacity": 35,
+        "height": 360
+      }
+    },
+    "gift_content": {
+      "type": "plumae-alternating-content",
+      "blocks": {
+        "intro": {
+          "type": "story",
+          "settings": {
+            "layout": "center",
+            "image_position": "left",
+            "heading": "Geen standaard cadeau, maar iets dat iedere week terugkomt",
+            "text": "<p><em>Wat eten we vandaag?</em> is een kaartspel waarmee je samen in een paar minuten bepaalt wat er die week op tafel komt. Je speelt met gerechten en actiekaarten, stelt samen een weekmenu samen en gebruikt daarna de gratis app voor recepten en een boodschappenlijst.</p><p>Daardoor is het niet alleen leuk om uit te pakken, maar ook een cadeau dat daarna echt gebruikt kan worden.</p>",
+            "button_label": "Bekijk de basisset",
+            "button_link": "/products/wat-eten-we-vandaag-basisset",
+            "background_color": "#f1eada",
+            "text_color": "#475a61"
+          }
+        },
+        "dinerclub": {
+          "type": "story",
+          "settings": {
+            "layout": "split",
+            "image_position": "right",
+            "image": "shopify://shop_images/basisset_3d_e2947c8a-7167-4929-a452-8d773504c1d4.png",
+            "heading": "Cadeau voor een eetclub of dinerclub",
+            "text": "<p>Zoek je een origineel cadeau voor een eetclub of dinerclub? Dan past een spel rond eten vanzelf bij de gelegenheid. <em>Wat eten we vandaag?</em> geeft de groep iets om samen te spelen én levert meteen inspiratie op voor toekomstige etentjes.</p><p>Ook geschikt als bedankje voor de organisator, als verjaardagscadeau binnen de groep of als gezamenlijk cadeau voor iemand die graag kookt.</p>",
+            "button_label": "Bekijk het spel",
+            "button_link": "/products/wat-eten-we-vandaag-basisset",
+            "background_color": "#475a61",
+            "text_color": "#f1eada"
+          }
+        },
+        "stellen_gezinnen": {
+          "type": "story",
+          "settings": {
+            "layout": "center",
+            "image_position": "left",
+            "heading": "Origineel cadeau voor een stel of gezin",
+            "text": "<p>Voor stellen en gezinnen is de vraag “Wat eten we vandaag?” vaak een dagelijks terugkerend ding. Met het kaartspel wordt juist dat moment een kort spelletje: samen kiezen, elkaar dwarszitten met actiekaarten en uiteindelijk een weekmenu overhouden.</p><p>Daarom werkt het goed als praktisch cadeau voor een stel, housewarming, verjaardag of gezin dat wel wat nieuwe inspiratie aan tafel kan gebruiken.</p>",
+            "button_label": "",
+            "button_link": "",
+            "background_color": "#f1eada",
+            "text_color": "#475a61"
+          }
+        },
+        "foodies": {
+          "type": "story",
+          "settings": {
+            "layout": "center",
+            "image_position": "left",
+            "heading": "Voor foodies en kookliefhebbers",
+            "text": "<p>Een kookboek is niet altijd het makkelijkste cadeau voor iemand die er al twintig heeft. <em>Wat eten we vandaag?</em> benadert koken vanaf een andere kant: niet nóg meer recepten verzamelen, maar op een speelse manier bepalen welke gerechten je daadwerkelijk gaat maken.</p><p>Een origineel cadeau voor een foodie, thuiskok of kookliefhebber die graag nieuwe gerechten probeert.</p>",
+            "button_label": "",
+            "button_link": "",
+            "background_color": "#c35943",
+            "text_color": "#f1eada"
+          }
+        },
+        "feestdagen": {
+          "type": "story",
+          "settings": {
+            "layout": "center",
+            "image_position": "left",
+            "heading": "Kerstcadeau of Sinterklaascadeau",
+            "text": "<p>Ook rond de feestdagen is het spel een compact cadeau dat je gemakkelijk onder de kerstboom of in de zak van Sinterklaas legt. Vooral geschikt voor mensen die graag samen eten, koken of spelletjes spelen.</p><p>Zoek je een origineel kerstcadeau voor een stel, gezin of kookliefhebber? Dan geef je met <em>Wat eten we vandaag?</em> iets dat ook ná de feestdagen iedere week opnieuw gebruikt kan worden.</p>",
+            "button_label": "Bekijk de basisset",
+            "button_link": "/products/wat-eten-we-vandaag-basisset",
+            "background_color": "#475a61",
+            "text_color": "#f1eada"
+          }
+        },
+        "budget": {
+          "type": "story",
+          "settings": {
+            "layout": "center",
+            "image_position": "left",
+            "heading": "Een origineel cadeau onder €35",
+            "text": "<p>Je hoeft voor een persoonlijk cadeau niet meteen groot uit te pakken. De basisset en bundelmogelijkheden van <em>Wat eten we vandaag?</em> vallen binnen een toegankelijk cadeaubudget, terwijl je iets geeft dat vaker dan één keer gebruikt kan worden.</p>",
+            "button_label": "Bekijk alle sets",
+            "button_link": "/collections/all",
+            "background_color": "#f1eada",
+            "text_color": "#475a61"
+          }
+        }
+      },
+      "block_order": [
+        "intro",
+        "dinerclub",
+        "stellen_gezinnen",
+        "foodies",
+        "feestdagen",
+        "budget"
+      ],
+      "settings": {
+        "background_color": "#f1eada"
+      }
+    },
+    "featured_product": {
+      "type": "plumae-featured-product",
+      "settings": {
+        "product": "wat-eten-we-vandaag-basisset",
+        "label": "Het cadeau dat iedere week terugkomt",
+        "heading": "Wat eten we vandaag? – Basisset",
+        "placeholder_text": "<p>Maak samen in vijf minuten een weekmenu en ontdek via de app de recepten en boodschappenlijst.</p>",
+        "show_description": false,
+        "button_label": "Bekijk de basisset",
+        "placeholder_link": "/products/wat-eten-we-vandaag-basisset",
+        "background_color": "#f1eada"
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "gift_content",
+    "featured_product"
+  ]
+}
