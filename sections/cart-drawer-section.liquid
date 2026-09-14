@@ -1,6 +1,19 @@
 {% # SRA target for /cart endpoints. The Section Rendering API provides the section wrapper. %}
 {% render 'cart-drawer', render_wrapper: false %}
 
+{% stylesheet %}
+  .cart__ctas::before {
+    content: 'Ook betalen met iDEAL? Kies Afrekenen.';
+    display: block;
+    width: 100%;
+    margin: 0;
+    text-align: center;
+    color: var(--color-foreground-subdued);
+    font-size: var(--font-size--2xs);
+    line-height: 1.4;
+  }
+{% endstylesheet %}
+
 {% schema %}
 {
   "name": "t:names.cart_drawer"
