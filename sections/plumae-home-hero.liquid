@@ -2,7 +2,7 @@
   assign featured_product = section.settings.product
   assign product_url = featured_product.url | default: '/products/wat-eten-we-vandaag-basisset'
 %}
-<section class="pl-redesign-hero" style="--pl-hero-bg: {{ section.settings.background_color }};">
+<section class="pl-redesign-hero" style="--pl-hero-bg: {{ section.settings.background_color }}; --hanger-w-d: {{ section.settings.hanger_w_d }}px; --hanger-x-d: {{ section.settings.hanger_x_d }}%; --hanger-y-d: {{ section.settings.hanger_y_d }}px; --hanger-w-m: {{ section.settings.hanger_w_m }}px; --hanger-x-m: {{ section.settings.hanger_x_m }}px; --hanger-y-m: {{ section.settings.hanger_y_m }}px; --wall-w-d: {{ section.settings.wall_w_d }}px; --wall-x-d: {{ section.settings.wall_x_d }}px; --wall-y-d: {{ section.settings.wall_y_d }}px; --wall-w-m: {{ section.settings.wall_w_m }}px; --wall-x-m: {{ section.settings.wall_x_m }}px; --wall-y-m: {{ section.settings.wall_y_m }}px;">
   <div class="pl-redesign-hero__inner plumae-shell">
     <div class="pl-redesign-hero__copy plumae-reveal">
       <p class="pl-redesign-hero__eyebrow">{{ section.settings.eyebrow }}</p>
@@ -29,7 +29,23 @@
     { "type": "text", "id": "eyebrow", "label": "Bovenregel", "default": "Wat eten we vandaag?" },
     { "type": "text", "id": "description", "label": "Korte tekst", "default": "Geen eindeloze discussie over recepten. Kies gerechten met de kaarten, scan voor het recept en zet alles direct in je boodschappenlijst." },
     { "type": "text", "id": "hint", "label": "Kleine tekst onder knop", "default": "Een kaartspel voor het hele gezin" },
-    { "type": "color", "id": "background_color", "label": "Achtergrond", "default": "#475A61" }
+    { "type": "color", "id": "background_color", "label": "Achtergrond", "default": "#475A61" },
+    { "type": "header", "content": "Hangende figuur – desktop" },
+    { "type": "range", "id": "hanger_w_d", "label": "Grootte", "min": 40, "max": 240, "step": 5, "unit": "px", "default": 150 },
+    { "type": "range", "id": "hanger_x_d", "label": "Linkspositie", "min": -20, "max": 100, "step": 5, "unit": "%", "default": -10 },
+    { "type": "range", "id": "hanger_y_d", "label": "Afstand vanaf boven", "min": -100, "max": 200, "step": 5, "unit": "px", "default": 0 },
+    { "type": "header", "content": "Hangende figuur – mobiel" },
+    { "type": "range", "id": "hanger_w_m", "label": "Grootte mobiel", "min": 40, "max": 160, "step": 5, "unit": "px", "default": 80 },
+    { "type": "range", "id": "hanger_x_m", "label": "Afstand vanaf rechts mobiel", "min": -100, "max": 200, "step": 5, "unit": "px", "default": 5 },
+    { "type": "range", "id": "hanger_y_m", "label": "Afstand vanaf boven mobiel", "min": -100, "max": 200, "step": 5, "unit": "px", "default": -5 },
+    { "type": "header", "content": "Figuur achter muur – desktop" },
+    { "type": "range", "id": "wall_w_d", "label": "Grootte muurfiguur", "min": 40, "max": 240, "step": 5, "unit": "px", "default": 170 },
+    { "type": "range", "id": "wall_x_d", "label": "Afstand vanaf rechts", "min": -150, "max": 150, "step": 5, "unit": "px", "default": -60 },
+    { "type": "range", "id": "wall_y_d", "label": "Afstand vanaf onder", "min": -100, "max": 200, "step": 5, "unit": "px", "default": 25 },
+    { "type": "header", "content": "Figuur achter muur – mobiel" },
+    { "type": "range", "id": "wall_w_m", "label": "Grootte muurfiguur mobiel", "min": 40, "max": 160, "step": 5, "unit": "px", "default": 70 },
+    { "type": "range", "id": "wall_x_m", "label": "Afstand vanaf rechts mobiel", "min": -100, "max": 200, "step": 5, "unit": "px", "default": -10 },
+    { "type": "range", "id": "wall_y_m", "label": "Afstand vanaf onder mobiel", "min": -100, "max": 200, "step": 5, "unit": "px", "default": 80 }
   ],
   "presets": [{ "name": "Plumae: nieuwe hero" }]
 }

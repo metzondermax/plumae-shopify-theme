@@ -1,0 +1,36 @@
+{% comment %}A compact homepage header; the announcement bar remains in header-group.{% endcomment %}
+<script src="{{ 'cart-icon.js' | asset_url }}" type="module"></script>
+<header class="pl-redesign-header">
+  <a class="pl-redesign-header__logo" href="{{ routes.root_url }}" aria-label="{{ shop.name | escape }} – home" style="background-image: url('{{ 'tekstalleenpng.png' | file_url }}')"></a>
+  <div class="pl-redesign-header__actions">
+    <a class="pl-redesign-header__search" href="{{ routes.search_url }}" aria-label="Zoeken">
+      {{ 'icon-search.svg' | inline_asset_content }}
+    </a>
+    <a class="pl-redesign-header__cart" href="{{ routes.cart_url }}" aria-label="Winkelwagen, {{ cart.item_count }} producten">
+      <cart-icon>
+        {{ 'icon-cart.svg' | inline_asset_content }}
+        {% render 'cart-bubble', limit: 100 %}
+      </cart-icon>
+    </a>
+    <details class="pl-redesign-header__menu">
+      <summary aria-label="Menu openen">
+        <span class="pl-redesign-header__open" aria-hidden="true">{{ 'icon-menu.svg' | inline_asset_content }}</span>
+        <span class="pl-redesign-header__close" aria-hidden="true">{{ 'icon-close.svg' | inline_asset_content }}</span>
+      </summary>
+      <nav class="pl-redesign-header__panel" aria-label="Hoofdnavigatie">
+        <ul>
+          {% for link in linklists['main-menu'].links %}
+            <li>
+              <a href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>{{ link.title }}</a>
+              {% if link.links != blank %}
+                <ul>
+                  {% for child in link.links %}<li><a href="{{ child.url }}">{{ child.title }}</a></li>{% endfor %}
+                </ul>
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      </nav>
+    </details>
+  </div>
+</header>

@@ -70,6 +70,9 @@
       <div id="header-group">
         {% sections 'header-group' %}
       </div>
+      {% if template.name == 'index' %}
+        {% render 'plumae-home-header' %}
+      {% endif %}
 
       <script>
         // Inline header height and menu style calculations to prevent layout shift
