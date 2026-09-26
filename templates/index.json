@@ -1,137 +1,34 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
+/* Homepage van het ongepubliceerde redesign-thema. */
 {
   "sections": {
-    "plumae_hero": {
+    "hero": {
       "type": "plumae-home-hero",
       "settings": {
-        "image": "shopify://shop_images/basisset_3d_e2947c8a-7167-4929-a452-8d773504c1d4.png",
-        "image_position": "right",
+        "product": "wat-eten-we-vandaag-basisset",
         "eyebrow": "Wat eten we vandaag?",
-        "heading": "Een weekmenu in vijf minuten",
-        "text": "<p>Een snel en speels kaartspel waarmee je samen beslist wat er deze week op tafel komt.</p>",
-        "primary_label": "Bekijk de basisset",
-        "primary_product": "",
-        "primary_link": "/collections/all",
-        "secondary_label": "Ontdek meer",
-        "secondary_link": "/pages/over-ons",
-        "background_color": "#475a61",
-        "text_color": "#f1eada",
-        "overlay_opacity": 70,
-        "height": 680
+        "description": "Geen eindeloze discussie over recepten. Kies gerechten met de kaarten, scan voor het recept en zet alles direct in je boodschappenlijst.",
+        "hint": "Een kaartspel voor het hele gezin",
+        "background_color": "#475A61"
       }
     },
-    "plumae_split": {
-      "type": "plumae-split-heading",
-      "settings": {
-        "first_line": "Een kaartspel",
-        "second_line": "maar dan net anders",
-        "first_color": "#475a61",
-        "second_color": "#c35943",
-        "background_color": "#f1eada"
-      }
+    "intro": {
+      "type": "plumae-home-intro",
+      "settings": {}
     },
-    "section_CFBFM4": {
-      "type": "section",
-      "blocks": {
-        "text_8HhDFV": {
-          "type": "text",
-          "name": "t:names.text",
-          "settings": {
-            "text": "<p><br/><em>Wat Eten We Vandaag?</em> is een kaartspel waarmee je samen op een leuke en snelle manier je weekmenu bepaalt. Kies gerechten, gebruik actiekaarten om het menu te veranderen en ontdek via de app direct de recepten en boodschappenlijst.</p><p>Zo verandert de wekelijkse vraag <em>“Wat eten we vandaag?”</em> van een terugkerende discussie in een kort en gezellig spelmoment.</p>",
-            "width": "100%",
-            "max_width": "normal",
-            "alignment": "center",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "font_size": "",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "text_color": "",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "button_yMfymH": {
-          "type": "button",
-          "name": "t:names.button",
-          "settings": {
-            "label": "Shop nu",
-            "link": "shopify://collections/all",
-            "open_in_new_tab": false,
-            "style_class": "button",
-            "custom_button_background": "{{ settings.color_palette.foreground }}",
-            "custom_button_text": "{{ settings.color_palette.background }}",
-            "custom_button_border": "{{ settings.color_palette.background }}",
-            "link_text_color": "",
-            "width": "fit-content",
-            "custom_width": 100,
-            "width_mobile": "fit-content",
-            "custom_width_mobile": 100
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "text_8HhDFV",
-        "button_yMfymH"
-      ],
-      "name": "t:names.rich_text_section",
-      "settings": {
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "center",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 25,
-        "section_width": "page-width",
-        "section_height": "",
-        "section_height_custom": 50,
-        "background_media": "none",
-        "background_color": "",
-        "video_position": "cover",
-        "background_image_position": "cover",
-        "toggle_overlay": false,
-        "overlay_color": "#00000026",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
-        "border_color": "",
-        "border_radius": 0,
-        "padding-block-start": 0,
-        "padding-block-end": 0
-      }
-    },
-    "plumae_main_product": {
+    "product": {
       "type": "plumae-featured-product",
       "settings": {
         "product": "wat-eten-we-vandaag-basisset",
         "label": "De basisset",
-        "heading": "Wat eten we vandaag? – Basisset",
-        "placeholder_text": "<p>Maak in vijf minuten samen een weekmenu. </p><p>Met 54 standaardgerechten en 16 actiekaarten!</p>",
-        "show_description": false,
-        "button_label": "Bekijk de basisset",
-        "placeholder_link": "/collections/all",
-        "background_color": "#f1eada"
+        "heading": "Wat eten we vandaag?",
+        "text": "<p>Speel samen en maak van de vraag wat er op tafel komt een gezellig spelmoment.</p>",
+        "button_label": "Aan winkelwagen toevoegen"
+      }
+    },
+    "how": {
+      "type": "plumae-how-it-works",
+      "settings": {
+        "more_link": "/pages/veelgestelde-vragen"
       }
     },
     "plumae_expansions": {
@@ -171,13 +68,49 @@
         "card_background": "#f1eada",
         "card_text_color": "#475a61"
       }
+    },
+    "reviews": {
+      "type": "plumae-home-reviews",
+      "blocks": {
+        "review_1": {
+          "type": "review",
+          "settings": {
+            "quote": "Voorbeeldtekst: voeg hier later een echte klantreview toe.",
+            "name": "Naam klant (placeholder)"
+          }
+        },
+        "review_2": {
+          "type": "review",
+          "settings": {
+            "quote": "Voorbeeldtekst: voeg hier later een echte klantreview toe.",
+            "name": "Naam klant (placeholder)"
+          }
+        },
+        "review_3": {
+          "type": "review",
+          "settings": {
+            "quote": "Voorbeeldtekst: voeg hier later een echte klantreview toe.",
+            "name": "Naam klant (placeholder)"
+          }
+        }
+      },
+      "block_order": [
+        "review_1",
+        "review_2",
+        "review_3"
+      ],
+      "settings": {
+        "button_label": "Dit wil ik ook!",
+        "button_link": "/products/wat-eten-we-vandaag-basisset"
+      }
     }
   },
   "order": [
-    "plumae_hero",
-    "plumae_split",
-    "section_CFBFM4",
-    "plumae_main_product",
-    "plumae_expansions"
+    "hero",
+    "intro",
+    "product",
+    "how",
+    "plumae_expansions",
+    "reviews"
   ]
 }

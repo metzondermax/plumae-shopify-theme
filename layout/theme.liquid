@@ -10,7 +10,6 @@
     {%- if settings.favicon != blank -%}
       <link
         rel="icon"
-        type="image/png"
         href="{{ settings.favicon | image_url: width: 32, height: 32 }}"
       >
     {%- endif -%}
@@ -39,6 +38,17 @@
     {%- render 'meta-tags' -%}
     {%- render 'stylesheets' -%}
     {{ 'plumae-custom.css' | asset_url | stylesheet_tag }}
+    {% if template.name == 'index' %}
+      {% style %}
+        :root {
+          --pl-button-small: url("{{ 'knopklein.png' | file_url }}");
+          --pl-button-medium: url("{{ 'knopmiddel.png' | file_url }}");
+          --pl-button-large: url("{{ 'knopgroot.png' | file_url }}");
+        }
+      {% endstyle %}
+      {{ 'plumae-redesign.css' | asset_url | stylesheet_tag }}
+      <script src="{{ 'plumae-redesign.js' | asset_url }}" defer></script>
+    {% endif %}
     {%- render 'fonts' -%}
     {%- render 'scripts' -%}
     {%- render 'theme-styles-variables' -%}

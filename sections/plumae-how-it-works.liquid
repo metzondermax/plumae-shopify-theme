@@ -1,0 +1,27 @@
+<section class="pl-redesign-how" id="hoe-werkt-het">
+  <div class="plumae-shell pl-redesign-how__inner">
+    <div class="pl-redesign-how__copy plumae-reveal">
+      <p class="pl-redesign-how__eyebrow">Zo werkt het</p>
+      <h2>Wat eten we vandaag?<br><em>Dat vroegen wij ons ook af. Elke dag weer.</em></h2>
+      <p>Iedere dag bedenken wat je gaat eten kost vaak meer tijd dan het koken zelf. Met dit kaartspel maak je samen in een paar minuten een gevarieerd weekmenu.</p>
+      <ol>
+        <li><strong>Kies gerechten.</strong> Leg de kaarten op tafel en stel je weekmenu samen.</li>
+        <li><strong>Speel actiekaarten.</strong> Wissel gerechten en maak er een spel van.</li>
+        <li><strong>Scan en plan.</strong> Bekijk recepten in de gratis app en maak je boodschappenlijst.</li>
+      </ol>
+      <a class="pl-redesign-image-button pl-redesign-image-button--medium" href="{{ section.settings.more_link | default: '/pages/veelgestelde-vragen' }}">Meer over het spel</a>
+    </div>
+    <div class="pl-redesign-how__visual plumae-reveal">
+      <img src="{{ 'productfoto.png' | file_url }}" width="1086" height="840" loading="lazy" alt="De basisset met de krijtachtige stickman">
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Plumae: zo werkt het",
+  "settings": [
+    { "type": "url", "id": "more_link", "label": "Link naar uitgebreide uitleg" }
+  ],
+  "presets": [{ "name": "Plumae: zo werkt het" }]
+}
+{% endschema %}

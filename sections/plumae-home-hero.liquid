@@ -1,104 +1,36 @@
 {% liquid
-  assign has_custom_image = false
-  assign primary_destination = section.settings.primary_link
-  if primary_destination == blank and section.settings.primary_product != blank
-    assign primary_destination = section.settings.primary_product.url
-  endif
-  if primary_destination == blank
-    assign primary_destination = routes.all_products_collection_url
-  endif
-  if section.settings.image != blank
-    assign has_custom_image = true
-    assign hero_alt = section.settings.image.alt | default: section.settings.heading
-  endif
+  assign featured_product = section.settings.product
+  assign product_url = featured_product.url | default: '/products/wat-eten-we-vandaag-basisset'
 %}
-
-<section
-  class="plumae-hero"
-  style="--hero-bg: {{ section.settings.background_color }}; --hero-text: {{ section.settings.text_color }}; --hero-height: {{ section.settings.height }}px; --hero-position: {{ section.settings.image_position }}; --hero-overlay: {{ section.settings.overlay_opacity | divided_by: 100.0 }};"
->
-  <div class="plumae-hero__media plumae-hero__media--cutout">
-    {% if has_custom_image %}
-      {{ section.settings.image | image_url: width: 1800 | image_tag: loading: 'eager', fetchpriority: 'high', widths: '600, 900, 1200, 1500, 1800', sizes: '(min-width: 990px) 55vw, 100vw', alt: hero_alt }}
-    {% else %}
-      <img src="{{ 'plumae-basisbox-placeholder.png' | asset_url }}" width="1280" height="1280" loading="eager" fetchpriority="high" alt="Voorbeeldafbeelding van de basisset">
-    {% endif %}
-  </div>
-  <div class="plumae-hero__overlay"></div>
-  <div class="plumae-shell plumae-hero__content">
-    <div class="plumae-hero__copy">
-      {% if section.settings.eyebrow != blank %}<p class="plumae-hero__eyebrow">{{ section.settings.eyebrow }}</p>{% endif %}
-      <h1 class="plumae-hero__title">{{ section.settings.heading }}</h1>
-      {% if section.settings.text != blank %}<div class="plumae-hero__text plumae-rte">{{ section.settings.text }}</div>{% endif %}
-      <div class="plumae-hero__actions">
-        {% if section.settings.primary_label != blank %}
-          <a class="plumae-button plumae-button--filled" href="{{ primary_destination }}">{{ section.settings.primary_label }}</a>
-        {% endif %}
-        {% if section.settings.secondary_label != blank %}
-          <a class="plumae-button plumae-button--outline" href="{{ section.settings.secondary_link | default: '/pages/over-ons' }}">{{ section.settings.secondary_label }}</a>
-        {% endif %}
-      </div>
+<section class="pl-redesign-hero" style="--pl-hero-bg: {{ section.settings.background_color }};">
+  <div class="pl-redesign-hero__inner plumae-shell">
+    <div class="pl-redesign-hero__copy plumae-reveal">
+      <p class="pl-redesign-hero__eyebrow">{{ section.settings.eyebrow }}</p>
+      <h1 class="pl-redesign-hero__title">Maak samen<br>in <span>5 minuten</span><br>je weekmenu</h1>
+      <p class="pl-redesign-hero__description">{{ section.settings.description }}</p>
+      <a class="pl-redesign-image-button pl-redesign-image-button--large" href="{{ product_url }}">
+        {% if featured_product != blank %}Basisset voor {{ featured_product.price | money }}{% else %}Bekijk de basisset{% endif %}
+      </a>
+      <p class="pl-redesign-hero__hint">{{ section.settings.hint }}</p>
+    </div>
+    <div class="pl-redesign-hero__visual plumae-reveal" aria-hidden="true">
+      <img class="pl-redesign-hero__product" src="{{ 'basisset_3d_e2947c8a-7167-4929-a452-8d773504c1d4.png' | file_url }}" width="1254" height="1254" alt="" loading="lazy">
+      <img class="pl-redesign-hero__hanger" src="{{ 'stickmanvallen.png' | file_url }}" width="280" height="450" alt="">
+      <img class="pl-redesign-hero__wall" src="{{ 'stickmanmuur.png' | file_url }}" width="210" height="330" alt="">
     </div>
   </div>
 </section>
 
-{% style %}
-  @media (min-width: 990px) {
-    #shopify-section-{{ section.id }} .plumae-hero__content {
-      max-width: none;
-      width: min(1180px, calc(100% - 40px));
-    }
-
-    #shopify-section-{{ section.id }} .plumae-hero__copy {
-      width: min(44%, 510px);
-      text-align: left;
-    }
-
-    #shopify-section-{{ section.id }} .plumae-hero__title,
-    #shopify-section-{{ section.id }} .plumae-hero__text {
-      max-width: 100%;
-    }
-
-    #shopify-section-{{ section.id }} .plumae-hero__title {
-      font-size: clamp(2.8rem, 5vw, 5.2rem);
-    }
-
-    #shopify-section-{{ section.id }} .plumae-hero__overlay {
-      background: linear-gradient(
-        90deg,
-        rgba(71, 90, 97, var(--hero-overlay, .86)) 0%,
-        rgba(71, 90, 97, .72) 36%,
-        rgba(71, 90, 97, .20) 56%,
-        rgba(71, 90, 97, .04) 76%
-      );
-    }
-  }
-{% endstyle %}
-
 {% schema %}
 {
-  "name": "Plumae: homepageheader",
-  "tag": "section",
+  "name": "Plumae: nieuwe hero",
   "settings": [
-    { "type": "image_picker", "id": "image", "label": "Grote productfoto" },
-    { "type": "select", "id": "image_position", "label": "Positie foto", "default": "center", "options": [
-      { "value": "left", "label": "Links" },
-      { "value": "center", "label": "Midden" },
-      { "value": "right", "label": "Rechts" }
-    ]},
-    { "type": "text", "id": "eyebrow", "label": "Kleine bovenregel", "default": "Wat eten we vandaag?" },
-    { "type": "text", "id": "heading", "label": "Grote kop", "default": "Een weekmenu in vijf minuten" },
-    { "type": "richtext", "id": "text", "label": "Korte toelichting", "default": "<p>Een snel en speels kaartspel waarmee je samen beslist wat er deze week op tafel komt.</p>" },
-    { "type": "text", "id": "primary_label", "label": "Tekst eerste knop", "default": "Shop nu" },
-    { "type": "product", "id": "primary_product", "label": "Product voor eerste knop" },
-    { "type": "url", "id": "primary_link", "label": "Andere link eerste knop (optioneel)" },
-    { "type": "text", "id": "secondary_label", "label": "Tekst tweede knop", "default": "Ontdek meer" },
-    { "type": "url", "id": "secondary_link", "label": "Link tweede knop" },
-    { "type": "color", "id": "background_color", "label": "Achtergrondkleur", "default": "#475A61" },
-    { "type": "color", "id": "text_color", "label": "Tekstkleur", "default": "#F1EADA" },
-    { "type": "range", "id": "overlay_opacity", "label": "Donkerte over foto", "min": 0, "max": 100, "step": 5, "unit": "%", "default": 70 },
-    { "type": "range", "id": "height", "label": "Hoogte op desktop", "min": 480, "max": 900, "step": 20, "unit": "px", "default": 680 }
+    { "type": "product", "id": "product", "label": "Basisset voor actuele prijs" },
+    { "type": "text", "id": "eyebrow", "label": "Bovenregel", "default": "Wat eten we vandaag?" },
+    { "type": "text", "id": "description", "label": "Korte tekst", "default": "Geen eindeloze discussie over recepten. Kies gerechten met de kaarten, scan voor het recept en zet alles direct in je boodschappenlijst." },
+    { "type": "text", "id": "hint", "label": "Kleine tekst onder knop", "default": "Een kaartspel voor het hele gezin" },
+    { "type": "color", "id": "background_color", "label": "Achtergrond", "default": "#475A61" }
   ],
-  "presets": [{ "name": "Plumae: homepageheader" }]
+  "presets": [{ "name": "Plumae: nieuwe hero" }]
 }
 {% endschema %}

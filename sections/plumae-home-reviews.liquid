@@ -1,0 +1,36 @@
+<section class="pl-redesign-reviews">
+  <div class="plumae-shell">
+    <h2 class="plumae-reveal">Genoeg over ons...<br><em>Wat vinden anderen?</em></h2>
+    <div class="pl-redesign-reviews__grid">
+      {% for block in section.blocks %}
+        <blockquote class="pl-redesign-review plumae-reveal" {{ block.shopify_attributes }}>
+          <img src="{{ 'sterretjes.png' | file_url }}" width="190" height="38" loading="lazy" alt="" aria-hidden="true">
+          <p>{{ block.settings.quote }}</p>
+          <cite>{{ block.settings.name }}</cite>
+        </blockquote>
+      {% endfor %}
+    </div>
+    <a class="pl-redesign-image-button pl-redesign-image-button--wide plumae-reveal" href="{{ section.settings.button_link | default: '/products/wat-eten-we-vandaag-basisset' }}">{{ section.settings.button_label }}</a>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Plumae: reviews",
+  "settings": [
+    { "type": "text", "id": "button_label", "label": "Knoptekst", "default": "Dit wil ik ook!" },
+    { "type": "url", "id": "button_link", "label": "Knoplink" }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        { "type": "textarea", "id": "quote", "label": "Reviewtekst", "default": "Voorbeeldtekst: voeg hier later een echte klantreview toe." },
+        { "type": "text", "id": "name", "label": "Naam", "default": "Naam klant (placeholder)" }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [{ "name": "Plumae: reviews", "blocks": [{ "type": "review" }, { "type": "review" }, { "type": "review" }] }]
+}
+{% endschema %}
