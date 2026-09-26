@@ -92,9 +92,14 @@
 .pl-redesign-product product-form-component, .pl-redesign-product form, .pl-redesign-product add-to-cart-component { display: block; }
 .pl-redesign-product .pl-redesign-image-button { width: min(100%, 430px); max-width: 100%; }
 .pl-redesign-product .pl-redesign-image-button .add-to-cart-icon, .pl-redesign-product .pl-redesign-image-button .add-to-cart__added { display: none; }
+.pl-redesign-product--collection { background: #f1eada; color: #475a61; }
 .pl-redesign-product--collection .pl-redesign-product__inner { grid-template-columns: minmax(0, 1fr); max-width: 760px; }
+.pl-redesign-product--collection .pl-redesign-product__visual { background: rgba(71, 90, 97, .07); }
 .pl-redesign-product--collection .pl-redesign-product__content { text-align: center; }
+.pl-redesign-product--collection .pl-redesign-product__label { color: #475a61; }
 .pl-redesign-product--collection .pl-redesign-product__price { justify-content: center; }
+.pl-redesign-product--collection .pl-redesign-product__price strong { color: #c35943; }
+.pl-redesign-product--collection .pl-redesign-product__price s { color: #63757b; }
 .pl-redesign-product--collection .pl-redesign-image-button { margin-inline: auto; }
 
 .pl-redesign-how { background: #f1eada; color: #475a61; padding: clamp(70px, 8vw, 110px) 0; }
