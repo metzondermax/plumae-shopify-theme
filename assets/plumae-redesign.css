@@ -96,6 +96,21 @@
 .pl-redesign-review cite { font-style: italic; }
 .pl-redesign-reviews > .plumae-shell > .pl-redesign-image-button { min-width: min(100%, 320px); }
 
+@media (min-width: 750px) {
+  #header-component .header__row--top .header__columns {
+    grid-template-areas: 'logo search actions menu';
+    grid-template-columns: minmax(0, 1fr) 44px auto 60px;
+    align-items: center;
+  }
+  #header-component .header__row--top .header__column { display: contents; }
+  #header-component .header__row--top .header-logo { grid-area: logo; justify-self: start; }
+  #header-component .header__row--top .search-action { grid-area: search; }
+  #header-component .header__row--top header-actions { grid-area: actions; }
+  #header-component .header__row--top .header__drawer { grid-area: menu; justify-self: end; }
+  #header-component[data-menu-style='menu'] .header__row--top .header__drawer { display: flex; }
+  #header-component .header__row--top header-menu { display: none; }
+}
+
 /* Reuse Horizon's drawer and cart controls in a compact mobile header. */
 @media (max-width: 749px) {
   #header-component[data-menu-style] .header__columns {
