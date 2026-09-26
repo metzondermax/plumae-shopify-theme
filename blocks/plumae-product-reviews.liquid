@@ -1,5 +1,8 @@
 {% capture review_cards %}{% content_for 'blocks' %}{% endcapture %}
-{% assign review_count = review_cards | split: 'data-pl-review-item' | size | minus: 1 %}
+{% assign review_count = 0 %}
+{% if review_cards contains 'data-pl-review-item' %}
+  {% assign review_count = review_cards | split: 'data-pl-review-item' | size | minus: 1 %}
+{% endif %}
 {% assign page_count = review_count | plus: 2 | divided_by: 3 %}
 
 <section class="pl-product-reviews" aria-label="Reviews voor {{ closest.product.title | escape }}" {{ block.shopify_attributes }}>
