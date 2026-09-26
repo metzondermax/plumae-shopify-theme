@@ -1,10 +1,9 @@
-<section class="pl-redesign-intro" style="--letter-w-d: {{ section.settings.letter_w_d }}px; --letter-x-d: {{ section.settings.letter_x_d }}px; --letter-y-d: {{ section.settings.letter_y_d }}px; --letter-w-m: {{ section.settings.letter_w_m }}px; --letter-x-m: {{ section.settings.letter_x_m }}px; --letter-y-m: {{ section.settings.letter_y_m }}px; --hanger-w-d: {{ section.settings.hanger_w_d }}px; --hanger-x-d: {{ section.settings.hanger_x_d }}px; --hanger-y-d: {{ section.settings.hanger_y_d }}px; --hanger-w-m: {{ section.settings.hanger_w_m }}px; --hanger-x-m: {{ section.settings.hanger_x_m }}px; --hanger-y-m: {{ section.settings.hanger_y_m }}px;">
+<section class="pl-redesign-intro" style="--letter-w-d: {{ section.settings.letter_w_d }}px; --letter-x-d: {{ section.settings.letter_x_d }}px; --letter-y-d: {{ section.settings.letter_y_d }}px; --letter-w-m: {{ section.settings.letter_w_m }}px; --letter-x-m: {{ section.settings.letter_x_m }}px; --letter-y-m: {{ section.settings.letter_y_m }}px;">
   <div class="plumae-shell">
     <div class="pl-redesign-intro__heading plumae-reveal">
       <h2>Een kaartspel<br><em>maar dan net anders</em></h2>
     </div>
     <div class="pl-redesign-intro__panel plumae-reveal">
-      <img class="pl-redesign-intro__hanger" src="{{ 'stickmanvallen.png' | file_url }}" width="500" height="500" loading="lazy" alt="" aria-hidden="true">
       <p><strong>Wat Eten We Vandaag?</strong> is een kaartspel waarmee je samen op een leuke en snelle manier je weekmenu bepaalt. Kies gerechten, gebruik actiekaarten om het menu te veranderen en ontdek via de app direct de recepten en boodschappenlijst.</p>
       <p>Zo verandert de wekelijkse vraag <em>“Wat eten we vandaag?”</em> van <span class="pl-redesign-intro__word">ee<span class="pl-redesign-intro__n-anchor">n<img class="pl-redesign-intro__letter-stickman" src="{{ 'stickmanlettern.png' | file_url }}" width="500" height="500" loading="lazy" alt="" aria-hidden="true"></span></span> terugkerende discussie in een kort en gezellig spelmoment.</p>
       <ul>
@@ -20,14 +19,6 @@
 {
   "name": "Plumae: intro",
   "settings": [
-    { "type": "header", "content": "Hangende figuur – desktop" },
-    { "type": "range", "id": "hanger_w_d", "label": "Grootte", "min": 40, "max": 240, "step": 5, "unit": "px", "default": 135 },
-    { "type": "range", "id": "hanger_x_d", "label": "Afstand vanaf links", "min": -150, "max": 150, "step": 5, "unit": "px", "default": -45 },
-    { "type": "range", "id": "hanger_y_d", "label": "Afstand vanaf boven", "min": -100, "max": 200, "step": 5, "unit": "px", "default": 0 },
-    { "type": "header", "content": "Hangende figuur – mobiel" },
-    { "type": "range", "id": "hanger_w_m", "label": "Grootte mobiel", "min": 40, "max": 160, "step": 5, "unit": "px", "default": 95 },
-    { "type": "range", "id": "hanger_x_m", "label": "Afstand vanaf links mobiel", "min": -100, "max": 200, "step": 5, "unit": "px", "default": -35 },
-    { "type": "range", "id": "hanger_y_m", "label": "Afstand vanaf boven mobiel", "min": -100, "max": 200, "step": 5, "unit": "px", "default": 0 },
     { "type": "header", "content": "Figuur bij de n – desktop" },
     { "type": "range", "id": "letter_w_d", "label": "Grootte", "min": 40, "max": 200, "step": 5, "unit": "px", "default": 110 },
     { "type": "range", "id": "letter_x_d", "label": "Links/rechts vanaf n", "min": -100, "max": 200, "step": 5, "unit": "px", "default": -35 },

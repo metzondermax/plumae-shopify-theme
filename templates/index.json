@@ -22,18 +22,18 @@
         "wall_y_d": 25,
         "wall_w_m": 95,
         "wall_x_m": -35,
-        "wall_y_m": 90
+        "wall_y_m": 90,
+        "hanger_w_d": 135,
+        "hanger_x_d": -45,
+        "hanger_y_d": -115,
+        "hanger_w_m": 95,
+        "hanger_x_m": -30,
+        "hanger_y_m": -80
       }
     },
     "intro": {
       "type": "plumae-home-intro",
       "settings": {
-        "hanger_w_d": 135,
-        "hanger_x_d": -45,
-        "hanger_y_d": -100,
-        "hanger_w_m": 95,
-        "hanger_x_m": -30,
-        "hanger_y_m": -55,
         "letter_w_d": 115,
         "letter_x_d": 200,
         "letter_y_d": -15,
