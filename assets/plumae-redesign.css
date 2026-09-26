@@ -56,12 +56,10 @@
 .pl-redesign-hero__hint { margin: 8px 0 0; font-size: .8rem; opacity: .85; }
 .pl-redesign-hero__visual { position: relative; align-self: stretch; min-height: 580px; }
 .pl-redesign-hero__product { position: absolute; inset: 4% 0 0; width: 100%; height: 92%; object-fit: contain; }
-.pl-redesign-hero__hanger { position: absolute; width: var(--hanger-w-d); height: auto; left: var(--hanger-x-d); top: var(--hanger-y-d); }
 .pl-redesign-hero__wall { position: absolute; width: var(--wall-w-d); height: auto; right: var(--wall-x-d); bottom: var(--wall-y-d); }
 
 .pl-redesign-intro { overflow: hidden; padding: 56px 0 70px; background: #f1eada; color: #475a61; text-align: center; }
 .pl-redesign-intro__heading { position: relative; margin: 0 auto 28px; max-width: 750px; }
-.pl-redesign-intro__heading img { position: absolute; width: var(--letter-w-d); height: auto; top: var(--letter-y-d); left: var(--letter-x-d); filter: brightness(0) saturate(100%) invert(33%) sepia(13%) saturate(656%) hue-rotate(145deg); }
 .pl-redesign-intro h2 { margin: 0; color: #475a61; font-size: clamp(2.2rem, 5vw, 4rem); line-height: 1.1; }
 .pl-redesign-intro h2 em, .pl-redesign-reviews h2 em { color: #c35943; font-style: normal; }
 .pl-redesign-intro__panel { position: relative; overflow: hidden; max-width: 750px; margin: 0 auto; padding: clamp(32px, 5vw, 60px); border-radius: 50px; background: #475a61; color: #fff9eb; font-size: clamp(1rem, 1.5vw, 1.2rem); line-height: 1.5; }
@@ -69,7 +67,11 @@
 .pl-redesign-intro__panel strong, .pl-redesign-intro__panel em { color: #ef8168; }
 .pl-redesign-intro__panel ul { width: max-content; max-width: 100%; margin: 24px auto 28px; padding-left: 1.4em; text-align: left; font-size: .95em; }
 .pl-redesign-intro__panel li { padding-left: 4px; }
-.pl-redesign-intro__stickman { position: absolute; width: var(--intro-wall-w-d); height: auto; right: var(--intro-wall-x-d); top: var(--intro-wall-y-d); pointer-events: none; }
+.pl-redesign-intro__panel > :is(p, ul, a) { position: relative; z-index: 2; }
+.pl-redesign-intro__hanger { position: absolute; z-index: 1; width: var(--hanger-w-d); height: auto; left: var(--hanger-x-d); top: var(--hanger-y-d); pointer-events: none; }
+.pl-redesign-intro__word { white-space: nowrap; }
+.pl-redesign-intro__n-anchor { position: relative; color: #ef8168; }
+.pl-redesign-intro__letter-stickman { position: absolute; width: var(--letter-w-d); max-width: none; height: auto; left: var(--letter-x-d); bottom: var(--letter-y-d); pointer-events: none; }
 
 .pl-redesign-product { background: #475a61; color: #f1eada; padding: clamp(58px, 7vw, 100px) 0; }
 .pl-redesign-product__inner { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(30px, 5vw, 80px); align-items: center; }
@@ -123,17 +125,16 @@
   .pl-redesign-hero__inner { display: block; min-height: 470px; }
   .pl-redesign-hero__visual { position: absolute; top: 0; right: 0; width: 100%; min-height: 100%; pointer-events: none; }
   .pl-redesign-hero__product { display: none; }
-  .pl-redesign-hero__hanger { width: var(--hanger-w-m); left: auto; right: var(--hanger-x-m); top: var(--hanger-y-m); }
   .pl-redesign-hero__wall { width: var(--wall-w-m); right: var(--wall-x-m); bottom: var(--wall-y-m); }
   .pl-redesign-hero__copy { padding: 64px 0 38px; text-align: center; }
   .pl-redesign-hero__eyebrow { font-size: .84rem; }
   .pl-redesign-hero__title { font-size: clamp(2.4rem, 10vw, 4.5rem); line-height: 1.06; }
   .pl-redesign-hero__description { margin: 22px auto 20px; max-width: 330px; padding-inline: 13px; font-size: .98rem; }
   .pl-redesign-intro { padding: 42px 0 65px; }
-  .pl-redesign-intro__heading img { width: var(--letter-w-m); left: var(--letter-x-m); top: var(--letter-y-m); }
   .pl-redesign-intro h2 { font-size: clamp(1.9rem, 8vw, 3rem); }
   .pl-redesign-intro__panel { border-radius: 44px; padding: 36px 26px; }
-  .pl-redesign-intro__stickman { width: var(--intro-wall-w-m); right: var(--intro-wall-x-m); top: var(--intro-wall-y-m); }
+  .pl-redesign-intro__hanger { width: var(--hanger-w-m); left: var(--hanger-x-m); top: var(--hanger-y-m); }
+  .pl-redesign-intro__letter-stickman { width: var(--letter-w-m); left: var(--letter-x-m); bottom: var(--letter-y-m); }
   .pl-redesign-product__inner, .pl-redesign-how__inner { grid-template-columns: 1fr; }
   .pl-redesign-product__visual { min-height: 330px; margin: 0 12px 16px; border-radius: 28px; }
   .pl-redesign-product__box { height: 320px; }
