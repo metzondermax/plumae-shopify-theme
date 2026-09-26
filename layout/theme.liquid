@@ -38,17 +38,15 @@
     {%- render 'meta-tags' -%}
     {%- render 'stylesheets' -%}
     {{ 'plumae-custom.css' | asset_url | stylesheet_tag }}
-    {% if template.name == 'index' %}
-      {% style %}
-        :root {
-          --pl-button-small: url("{{ 'knopklein.png' | file_url }}");
-          --pl-button-medium: url("{{ 'knopmiddel.png' | file_url }}");
-          --pl-button-large: url("{{ 'knopgroot.png' | file_url }}");
-        }
-      {% endstyle %}
-      {{ 'plumae-redesign.css' | asset_url | stylesheet_tag }}
-      <script src="{{ 'plumae-redesign.js' | asset_url }}" defer></script>
-    {% endif %}
+    {% style %}
+      :root {
+        --pl-button-small: url("{{ 'knopklein.png' | file_url }}");
+        --pl-button-medium: url("{{ 'knopmiddel.png' | file_url }}");
+        --pl-button-large: url("{{ 'knopgroot.png' | file_url }}");
+      }
+    {% endstyle %}
+    {{ 'plumae-redesign.css' | asset_url | stylesheet_tag }}
+    <script src="{{ 'plumae-redesign.js' | asset_url }}" defer></script>
     {%- render 'fonts' -%}
     {%- render 'scripts' -%}
     {%- render 'theme-styles-variables' -%}
@@ -61,7 +59,7 @@
     {{ content_for_header }}
   </head>
 
-  <body class="page-width-{{ settings.page_width }} card-hover-effect-{{ settings.card_hover_effect }}">
+  <body class="page-width-{{ settings.page_width }} card-hover-effect-{{ settings.card_hover_effect }}{% if template.name == 'index' %} plumae-home{% endif %}">
     {% render 'skip-to-content-link', href: '#MainContent', text: 'accessibility.skip_to_text' %}
 
     {% render 'chat-drawer' %}
@@ -70,9 +68,7 @@
       <div id="header-group">
         {% sections 'header-group' %}
       </div>
-      {% if template.name == 'index' %}
-        {% render 'plumae-home-header' %}
-      {% endif %}
+      {% render 'plumae-home-header' %}
 
       <script>
         // Inline header height and menu style calculations to prevent layout shift

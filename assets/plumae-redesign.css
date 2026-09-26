@@ -1,5 +1,5 @@
-/* Homepage redesign. The selectors below stay within its own sections. */
-#MainContent { overflow-x: clip; }
+/* Shared redesign styles. Home-specific overflow remains scoped to the homepage. */
+.plumae-home #MainContent { overflow-x: clip; }
 #header-group .header-section { display: none !important; }
 .pl-redesign-header { position: sticky; top: 0; z-index: 40; display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 68px; padding: 10px max(20px, calc((100vw - 1180px) / 2)); background: #f1eada; color: #475a61; border-bottom: 1px solid #c35943; }
 .pl-redesign-header__logo { display: block; flex: 0 1 260px; width: 260px; height: 42px; background-position: center; background-repeat: no-repeat; background-size: 260px 260px; }
@@ -92,6 +92,10 @@
 .pl-redesign-product product-form-component, .pl-redesign-product form, .pl-redesign-product add-to-cart-component { display: block; }
 .pl-redesign-product .pl-redesign-image-button { width: min(100%, 430px); max-width: 100%; }
 .pl-redesign-product .pl-redesign-image-button .add-to-cart-icon, .pl-redesign-product .pl-redesign-image-button .add-to-cart__added { display: none; }
+.pl-redesign-product--collection .pl-redesign-product__inner { grid-template-columns: minmax(0, 1fr); max-width: 760px; }
+.pl-redesign-product--collection .pl-redesign-product__content { text-align: center; }
+.pl-redesign-product--collection .pl-redesign-product__price { justify-content: center; }
+.pl-redesign-product--collection .pl-redesign-image-button { margin-inline: auto; }
 
 .pl-redesign-how { background: #f1eada; color: #475a61; padding: clamp(70px, 8vw, 110px) 0; }
 .pl-redesign-how__inner { display: grid; grid-template-columns: 1fr .9fr; gap: clamp(30px, 6vw, 90px); align-items: center; }

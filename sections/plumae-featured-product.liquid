@@ -3,14 +3,16 @@
   assign variant = featured_product.selected_or_first_available_variant
   assign product_form_id = 'PlumaeHomeProduct-' | append: section.id
 %}
-<section class="pl-redesign-product" id="basisset">
+<section class="pl-redesign-product{% if template.name == 'collection' %} pl-redesign-product--collection{% endif %}" id="basisset">
   <div class="plumae-shell pl-redesign-product__inner">
     <div class="pl-redesign-product__visual plumae-reveal">
       <span class="pl-redesign-product__badge">Bestseller</span>
       <img class="pl-redesign-product__box" src="{{ 'basisset_3d_e2947c8a-7167-4929-a452-8d773504c1d4.png' | file_url }}" width="1254" height="1254" loading="lazy" alt="Wat eten we vandaag? Basisset">
-      <img class="pl-redesign-product__groente" src="{{ 'groentemannetje.png' | file_url }}" width="510" height="560" loading="lazy" alt="">
-      <img class="pl-redesign-product__effect pl-redesign-product__effect--left" src="{{ 'effect_1.png' | file_url }}" width="150" height="150" loading="lazy" alt="">
-      <img class="pl-redesign-product__effect pl-redesign-product__effect--right" src="{{ 'effect_2.png' | file_url }}" width="150" height="150" loading="lazy" alt="">
+      {% if template.name == 'index' %}
+        <img class="pl-redesign-product__groente" src="{{ 'groentemannetje.png' | file_url }}" width="510" height="560" loading="lazy" alt="">
+        <img class="pl-redesign-product__effect pl-redesign-product__effect--left" src="{{ 'effect_1.png' | file_url }}" width="150" height="150" loading="lazy" alt="">
+        <img class="pl-redesign-product__effect pl-redesign-product__effect--right" src="{{ 'effect_2.png' | file_url }}" width="150" height="150" loading="lazy" alt="">
+      {% endif %}
     </div>
     <div class="pl-redesign-product__content plumae-reveal">
       <p class="pl-redesign-product__label">{{ section.settings.label }}</p>
