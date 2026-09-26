@@ -354,12 +354,111 @@
                 "name": "Karin V."
               },
               "blocks": {}
+            },
+            "plumae_review_gezond_1": {
+              "type": "plumae-review-entry",
+              "name": "Review per product",
+              "settings": {
+                "product": "wat-eten-we-vandaag-gezond-uitbreiding",
+                "quote": "Cadeau gekregen van vrienden en het werkt voor ons gezin heel goed. De recepten zijn divers en dus eet je elke week wat anders. Ik raad hem ook steeds vaker aan aan mensen om mijn heen.",
+                "name": "Jonas H."
+              },
+              "blocks": {}
+            },
+            "plumae_review_gezond_2": {
+              "type": "plumae-review-entry",
+              "name": "Review per product",
+              "settings": {
+                "product": "wat-eten-we-vandaag-gezond-uitbreiding",
+                "quote": "De kinderen helpen nu mee met het kiezen van het eten en dat werkt. Ze koken steeds vaker mee en eten dan ook het eten op. Een aanrader voor ouders met moeilijke eters!",
+                "name": "Noa R."
+              },
+              "blocks": {}
+            },
+            "plumae_review_gezond_3": {
+              "type": "plumae-review-entry",
+              "name": "Review per product",
+              "settings": {
+                "product": "wat-eten-we-vandaag-gezond-uitbreiding",
+                "quote": "Elke vrijdag doen we met het gezin dit spel. Op maandag laat ik alle boodschappen bezorger. Zo lekker handig. Geen boodschappen na mijn werk doen en niet meer bedenken wat we nu weer moeten eten. Thanks, dit is een blijvertje!",
+                "name": "Karin V."
+              },
+              "blocks": {}
+            },
+            "plumae_review_pasta_1": {
+              "type": "plumae-review-entry",
+              "name": "Review per product",
+              "settings": {
+                "product": "wat-eten-we-vandaag-pasta-uitbreiding",
+                "quote": "Cadeau gekregen van vrienden en het werkt voor ons gezin heel goed. De recepten zijn divers en dus eet je elke week wat anders. Ik raad hem ook steeds vaker aan aan mensen om mijn heen.",
+                "name": "Jonas H."
+              },
+              "blocks": {}
+            },
+            "plumae_review_pasta_2": {
+              "type": "plumae-review-entry",
+              "name": "Review per product",
+              "settings": {
+                "product": "wat-eten-we-vandaag-pasta-uitbreiding",
+                "quote": "De kinderen helpen nu mee met het kiezen van het eten en dat werkt. Ze koken steeds vaker mee en eten dan ook het eten op. Een aanrader voor ouders met moeilijke eters!",
+                "name": "Noa R."
+              },
+              "blocks": {}
+            },
+            "plumae_review_pasta_3": {
+              "type": "plumae-review-entry",
+              "name": "Review per product",
+              "settings": {
+                "product": "wat-eten-we-vandaag-pasta-uitbreiding",
+                "quote": "Elke vrijdag doen we met het gezin dit spel. Op maandag laat ik alle boodschappen bezorger. Zo lekker handig. Geen boodschappen na mijn werk doen en niet meer bedenken wat we nu weer moeten eten. Thanks, dit is een blijvertje!",
+                "name": "Karin V."
+              },
+              "blocks": {}
+            },
+            "plumae_review_budget_1": {
+              "type": "plumae-review-entry",
+              "name": "Review per product",
+              "settings": {
+                "product": "wat-eten-we-vandaag-budget-uitbreiding",
+                "quote": "Cadeau gekregen van vrienden en het werkt voor ons gezin heel goed. De recepten zijn divers en dus eet je elke week wat anders. Ik raad hem ook steeds vaker aan aan mensen om mijn heen.",
+                "name": "Jonas H."
+              },
+              "blocks": {}
+            },
+            "plumae_review_budget_2": {
+              "type": "plumae-review-entry",
+              "name": "Review per product",
+              "settings": {
+                "product": "wat-eten-we-vandaag-budget-uitbreiding",
+                "quote": "De kinderen helpen nu mee met het kiezen van het eten en dat werkt. Ze koken steeds vaker mee en eten dan ook het eten op. Een aanrader voor ouders met moeilijke eters!",
+                "name": "Noa R."
+              },
+              "blocks": {}
+            },
+            "plumae_review_budget_3": {
+              "type": "plumae-review-entry",
+              "name": "Review per product",
+              "settings": {
+                "product": "wat-eten-we-vandaag-budget-uitbreiding",
+                "quote": "Elke vrijdag doen we met het gezin dit spel. Op maandag laat ik alle boodschappen bezorger. Zo lekker handig. Geen boodschappen na mijn werk doen en niet meer bedenken wat we nu weer moeten eten. Thanks, dit is een blijvertje!",
+                "name": "Karin V."
+              },
+              "blocks": {}
             }
           },
           "block_order": [
             "plumae_review_entry_y9AcJD",
             "plumae_review_entry_HMe6Ay",
-            "plumae_review_entry_gaHG4J"
+            "plumae_review_entry_gaHG4J",
+            "plumae_review_gezond_1",
+            "plumae_review_gezond_2",
+            "plumae_review_gezond_3",
+            "plumae_review_pasta_1",
+            "plumae_review_pasta_2",
+            "plumae_review_pasta_3",
+            "plumae_review_budget_1",
+            "plumae_review_budget_2",
+            "plumae_review_budget_3"
           ]
         }
       },
