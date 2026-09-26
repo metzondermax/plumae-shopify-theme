@@ -102,22 +102,22 @@
         "review_1": {
           "type": "review",
           "settings": {
-            "quote": "Voorbeeldtekst: voeg hier later een echte klantreview toe.",
-            "name": "Naam klant (placeholder)"
+            "quote": "Elke vrijdag doen we met het gezin dit spel. Op maandag laat ik alle boodschappen bezorger. Zo lekker handig. Geen boodschappen na mijn werk doen en niet meer bedenken wat we nu weer moeten eten. Thanks, dit is een blijvertje!",
+            "name": "Karin V."
           }
         },
         "review_2": {
           "type": "review",
           "settings": {
-            "quote": "Voorbeeldtekst: voeg hier later een echte klantreview toe.",
-            "name": "Naam klant (placeholder)"
+            "quote": "De kinderen helpen nu mee met het kiezen van het eten en dat werkt. Ze koken steeds vaker mee en eten dan ook het eten op. Een aanrader voor ouders met moeilijke eters!",
+            "name": "Noa R."
           }
         },
         "review_3": {
           "type": "review",
           "settings": {
-            "quote": "Voorbeeldtekst: voeg hier later een echte klantreview toe.",
-            "name": "Naam klant (placeholder)"
+            "quote": "Cadeau gekregen van vrienden en het werkt voor ons gezin heel goed. De recepten zijn divers en dus eet je elke week wat anders. Ik raad hem ook steeds vaker aan aan mensen om mijn heen.",
+            "name": "Jonas H."
           }
         }
       },
