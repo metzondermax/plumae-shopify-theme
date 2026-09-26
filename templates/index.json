@@ -1,4 +1,12 @@
-/* Homepage van het ongepubliceerde redesign-thema. */
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
@@ -8,12 +16,31 @@
         "eyebrow": "Wat eten we vandaag?",
         "description": "Geen eindeloze discussie over recepten. Kies gerechten met de kaarten, scan voor het recept en zet alles direct in je boodschappenlijst.",
         "hint": "Een kaartspel voor het hele gezin",
-        "background_color": "#475A61"
+        "background_color": "#475a61",
+        "wall_w_d": 170,
+        "wall_x_d": -60,
+        "wall_y_d": 25,
+        "wall_w_m": 95,
+        "wall_x_m": -35,
+        "wall_y_m": 90
       }
     },
     "intro": {
       "type": "plumae-home-intro",
-      "settings": {}
+      "settings": {
+        "hanger_w_d": 135,
+        "hanger_x_d": -45,
+        "hanger_y_d": 0,
+        "hanger_w_m": 95,
+        "hanger_x_m": -30,
+        "hanger_y_m": -55,
+        "letter_w_d": 110,
+        "letter_x_d": -35,
+        "letter_y_d": -30,
+        "letter_w_m": 75,
+        "letter_x_m": -10,
+        "letter_y_m": -5
+      }
     },
     "product": {
       "type": "plumae-featured-product",
