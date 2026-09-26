@@ -20,6 +20,14 @@
   %}
 {% endcapture %}
 
+{% capture product_reviews %}
+  {% content_for 'block',
+    type: 'plumae-product-reviews',
+    id: 'product-reviews',
+    closest.product: closest.product
+  %}
+{% endcapture %}
+
 {% capture additional_blocks %}
   {% content_for 'blocks' %}
 {% endcapture %}
@@ -180,6 +188,7 @@
   settings: section.settings,
   media_gallery: media_gallery,
   product_details: product_details,
+  product_reviews: product_reviews,
   additional_blocks: additional_blocks
 %}
 

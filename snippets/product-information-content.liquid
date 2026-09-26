@@ -9,6 +9,7 @@
   @param {object} settings - Section settings object
   @param {string} media_gallery - Captured HTML for the product media gallery block
   @param {string} product_details - Captured HTML for the product details block
+  @param {string} [product_reviews] - Captured HTML for product-specific reviews, on product pages
   @param {string} additional_blocks - Captured HTML for additional section blocks
 
   @example
@@ -118,6 +119,9 @@
         {{ product_details }}
       {% endif %}
     {% endfor %}
+    {% if product_reviews != blank %}
+      {{ product_reviews }}
+    {% endif %}
   </product-component>
 
   {{ additional_blocks }}

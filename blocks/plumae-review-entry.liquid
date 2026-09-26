@@ -1,0 +1,23 @@
+{% if block.settings.product != blank and block.settings.product.id == closest.product.id and block.settings.quote != blank and block.settings.name != blank %}
+  <blockquote class="pl-product-review" data-pl-review-item {{ block.shopify_attributes }}>
+    <span class="pl-redesign-review__stars" role="img" aria-label="Vijf sterren">
+      <img src="{{ 'sterretjes.png' | file_url }}" width="190" height="38" loading="lazy" alt="" onload="this.nextElementSibling.hidden=true" onerror="this.hidden=true">
+      <span aria-hidden="true" hidden>★★★★★</span>
+    </span>
+    <p>{{ block.settings.quote | escape | newline_to_br }}</p>
+    <cite>{{ block.settings.name | escape }}</cite>
+  </blockquote>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Review per product",
+  "tag": null,
+  "settings": [
+    { "type": "product", "id": "product", "label": "Product" },
+    { "type": "textarea", "id": "quote", "label": "Reviewtekst" },
+    { "type": "text", "id": "name", "label": "Naam" }
+  ],
+  "presets": [{ "name": "Review per product" }]
+}
+{% endschema %}

@@ -337,7 +337,7 @@
   <media-gallery
     class="
       spacing-style
-      sticky-content
+      {% unless request.page_type == 'product' %}sticky-content{% endunless %}
       {% if media_presentation == 'grid' %}
         media-gallery--{{ block_settings.media_columns }}-column
         {% if block_settings.media_columns == "two" and block_settings.large_first_image%}media-gallery--large-first-image{% endif %}

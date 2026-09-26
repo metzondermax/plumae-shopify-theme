@@ -1,0 +1,31 @@
+{% capture review_cards %}{% content_for 'blocks' %}{% endcapture %}
+{% assign review_count = review_cards | split: 'data-pl-review-item' | size | minus: 1 %}
+{% assign page_count = review_count | plus: 2 | divided_by: 3 %}
+
+<section class="pl-product-reviews" aria-label="Reviews voor {{ closest.product.title | escape }}" {{ block.shopify_attributes }}>
+  <h2>Reviews{% if review_count > 0 %} ({{ review_count }}){% endif %}</h2>
+  {% if review_count == 0 %}
+    <p class="pl-product-reviews__empty">Helaas zijn er nog geen reviews voor dit product :(</p>
+  {% else %}
+    <div class="pl-product-reviews__viewport{% if review_count > 3 %} pl-product-reviews__viewport--paged{% endif %}" data-pl-reviews-viewport>
+      <div class="pl-product-reviews__cards">{{ review_cards }}</div>
+    </div>
+    {% if review_count > 3 %}
+      <div class="pl-product-reviews__controls">
+        <button type="button" data-pl-reviews-previous aria-label="Vorige drie reviews" disabled>‹</button>
+        <span data-pl-reviews-page aria-live="polite">1 / {{ page_count }}</span>
+        <button type="button" data-pl-reviews-next aria-label="Volgende drie reviews">›</button>
+      </div>
+    {% endif %}
+  {% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "Productreviews",
+  "tag": null,
+  "blocks": [{ "type": "plumae-review-entry" }],
+  "settings": [],
+  "presets": [{ "name": "Productreviews" }]
+}
+{% endschema %}

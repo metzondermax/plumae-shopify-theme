@@ -41,3 +41,36 @@
     if (menu.open && !menu.contains(event.target)) menu.open = false;
   });
 })();
+
+(() => {
+  function init(root = document) {
+    root.querySelectorAll('.pl-product-reviews').forEach((section) => {
+      if (section.dataset.reviewsInitialized) return;
+      const items = [...section.querySelectorAll('[data-pl-review-item]')];
+      const previous = section.querySelector('[data-pl-reviews-previous]');
+      const next = section.querySelector('[data-pl-reviews-next]');
+      const indicator = section.querySelector('[data-pl-reviews-page]');
+      if (!previous || !next || !indicator || items.length <= 3) return;
+      section.dataset.reviewsInitialized = 'true';
+      const total = Math.ceil(items.length / 3);
+      let page = 0;
+      function showPage(index) {
+        page = Math.max(0, Math.min(index, total - 1));
+        items.forEach((item, position) => { item.hidden = Math.floor(position / 3) !== page; });
+        indicator.textContent = `${page + 1} / ${total}`;
+        previous.disabled = page === 0;
+        next.disabled = page === total - 1;
+      }
+      previous.addEventListener('click', () => showPage(page - 1));
+      next.addEventListener('click', () => showPage(page + 1));
+      section.addEventListener('shopify:block:select', (event) => {
+        const index = items.findIndex((item) => item === event.target || item.contains(event.target));
+        if (index >= 0) showPage(Math.floor(index / 3));
+      });
+      showPage(0);
+      section.classList.add('pl-product-reviews--ready');
+    });
+  }
+  init();
+  document.addEventListener('shopify:section:load', (event) => init(event.target));
+})();
