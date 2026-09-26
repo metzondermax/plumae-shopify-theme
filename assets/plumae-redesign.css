@@ -1,4 +1,5 @@
 /* Homepage redesign. The selectors below stay within its own sections. */
+#MainContent { overflow-x: clip; }
 #header-group .header-section { display: none !important; }
 .pl-redesign-header { position: sticky; top: 0; z-index: 40; display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 68px; padding: 10px max(20px, calc((100vw - 1180px) / 2)); background: #f1eada; color: #475a61; border-bottom: 1px solid #c35943; }
 .pl-redesign-header__logo { display: block; flex: 0 1 260px; width: 260px; height: 42px; background-position: center; background-repeat: no-repeat; background-size: 260px 260px; }
@@ -69,9 +70,6 @@
 .pl-redesign-intro__panel ul { width: max-content; max-width: 100%; margin: 24px auto 28px; padding-left: 1.4em; text-align: left; font-size: .95em; }
 .pl-redesign-intro__panel li { padding-left: 4px; }
 .pl-redesign-intro__panel > :is(p, ul, a) { position: relative; z-index: 2; }
-.pl-redesign-intro__word { white-space: nowrap; }
-.pl-redesign-intro__n-anchor { position: relative; color: #ef8168; }
-.pl-redesign-intro__letter-stickman { position: absolute; width: var(--letter-w-d); max-width: none; height: auto; left: var(--letter-x-d); bottom: var(--letter-y-d); pointer-events: none; }
 
 .pl-redesign-product { background: #475a61; color: #f1eada; padding: clamp(58px, 7vw, 100px) 0; }
 .pl-redesign-product__inner { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(30px, 5vw, 80px); align-items: center; }
@@ -134,7 +132,6 @@
   .pl-redesign-intro { padding: 42px 0 65px; }
   .pl-redesign-intro h2 { font-size: clamp(1.9rem, 8vw, 3rem); }
   .pl-redesign-intro__panel { border-radius: 44px; padding: 36px 26px; }
-  .pl-redesign-intro__letter-stickman { width: var(--letter-w-m); left: var(--letter-x-m); bottom: var(--letter-y-m); }
   .pl-redesign-product__inner, .pl-redesign-how__inner { grid-template-columns: 1fr; }
   .pl-redesign-product__visual { min-height: 330px; margin: 0 12px 16px; border-radius: 28px; }
   .pl-redesign-product__box { height: 320px; }

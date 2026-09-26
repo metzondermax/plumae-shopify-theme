@@ -1,11 +1,11 @@
-<section class="pl-redesign-intro" style="--letter-w-d: {{ section.settings.letter_w_d }}px; --letter-x-d: {{ section.settings.letter_x_d }}px; --letter-y-d: {{ section.settings.letter_y_d }}px; --letter-w-m: {{ section.settings.letter_w_m }}px; --letter-x-m: {{ section.settings.letter_x_m }}px; --letter-y-m: {{ section.settings.letter_y_m }}px;">
+<section class="pl-redesign-intro">
   <div class="plumae-shell">
     <div class="pl-redesign-intro__heading plumae-reveal">
       <h2>Een kaartspel<br><em>maar dan net anders</em></h2>
     </div>
     <div class="pl-redesign-intro__panel plumae-reveal">
       <p><strong>Wat Eten We Vandaag?</strong> is een kaartspel waarmee je samen op een leuke en snelle manier je weekmenu bepaalt. Kies gerechten, gebruik actiekaarten om het menu te veranderen en ontdek via de app direct de recepten en boodschappenlijst.</p>
-      <p>Zo verandert de wekelijkse vraag <em>“Wat eten we vandaag?”</em> van <span class="pl-redesign-intro__word">ee<span class="pl-redesign-intro__n-anchor">n<img class="pl-redesign-intro__letter-stickman" src="{{ 'stickmanlettern.png' | file_url }}" width="500" height="500" loading="lazy" alt="" aria-hidden="true"></span></span> terugkerende discussie in een kort en gezellig spelmoment.</p>
+      <p>Zo verandert de wekelijkse vraag <em>“Wat eten we vandaag?”</em> van een terugkerende discussie in een kort en gezellig spelmoment.</p>
       <ul>
         <li>Discussies over het eten</li>
         <li>Haastig bedenken wat je moet eten</li>
@@ -18,16 +18,7 @@
 {% schema %}
 {
   "name": "Plumae: intro",
-  "settings": [
-    { "type": "header", "content": "Figuur bij de n – desktop" },
-    { "type": "range", "id": "letter_w_d", "label": "Grootte", "min": 40, "max": 200, "step": 5, "unit": "px", "default": 110 },
-    { "type": "range", "id": "letter_x_d", "label": "Links/rechts vanaf n", "min": -100, "max": 200, "step": 5, "unit": "px", "default": -35 },
-    { "type": "range", "id": "letter_y_d", "label": "Omhoog/omlaag vanaf n", "min": -100, "max": 200, "step": 5, "unit": "px", "default": -30 },
-    { "type": "header", "content": "Figuur bij de n – mobiel" },
-    { "type": "range", "id": "letter_w_m", "label": "Grootte mobiel", "min": 40, "max": 160, "step": 5, "unit": "px", "default": 75 },
-    { "type": "range", "id": "letter_x_m", "label": "Links/rechts vanaf n mobiel", "min": -100, "max": 200, "step": 5, "unit": "px", "default": -25 },
-    { "type": "range", "id": "letter_y_m", "label": "Omhoog/omlaag vanaf n mobiel", "min": -100, "max": 200, "step": 5, "unit": "px", "default": -20 }
-  ],
+  "settings": [],
   "presets": [{ "name": "Plumae: intro" }]
 }
 {% endschema %}

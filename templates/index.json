@@ -33,14 +33,7 @@
     },
     "intro": {
       "type": "plumae-home-intro",
-      "settings": {
-        "letter_w_d": 115,
-        "letter_x_d": 200,
-        "letter_y_d": -15,
-        "letter_w_m": 75,
-        "letter_x_m": -10,
-        "letter_y_m": -5
-      }
+      "settings": {}
     },
     "product": {
       "type": "plumae-featured-product",
