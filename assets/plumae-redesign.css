@@ -89,15 +89,28 @@
 .pl-redesign-reviews__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin-bottom: 32px; }
 .pl-redesign-review { min-height: 235px; margin: 0; padding: 34px 25px; background: #f1eada; color: #475a61; display: flex; flex-direction: column; align-items: center; justify-content: center; }
 .pl-redesign-review img { width: 160px; height: auto; max-width: 90%; margin-bottom: 18px; }
+.pl-redesign-review__stars { display: grid; place-items: center; min-height: 38px; margin-bottom: 18px; color: #c35943; font-size: 1.9rem; letter-spacing: .06em; line-height: 1; }
+.pl-redesign-review__stars img { grid-area: 1 / 1; margin: 0; }
+.pl-redesign-review__stars > span { grid-area: 1 / 1; }
 .pl-redesign-review p { margin: 0 0 15px; line-height: 1.5; }
 .pl-redesign-review cite { font-style: italic; }
 .pl-redesign-reviews > .plumae-shell > .pl-redesign-image-button { min-width: min(100%, 320px); }
 
-/* On mobile the menu is on the right, using the theme's existing drawer. */
+/* Reuse Horizon's drawer and cart controls in a compact mobile header. */
 @media (max-width: 749px) {
-  #header-component .header__columns .header__drawer { grid-area: rightB; justify-self: center; }
-  #header-component .header__columns header-actions { grid-area: leftA; justify-self: center; }
-  #header-component .header__columns .search-action { grid-area: leftB; }
+  #header-component[data-menu-style] .header__columns {
+    --header-template-columns: minmax(0, 1fr) 44px 44px;
+    grid-template-areas: 'logo cart menu';
+    grid-template-columns: var(--header-template-columns);
+    padding-inline: 12px;
+  }
+  #header-component .header__columns .header__column--left,
+  #header-component .header__columns .header__column--right { display: contents; }
+  #header-component .header__columns .header-logo { grid-area: logo; justify-self: start; }
+  #header-component .header__columns .header__drawer { grid-area: menu; justify-self: center; }
+  #header-component .header__columns header-actions { grid-area: cart; justify-self: center; }
+  #header-component .header__columns .search-action,
+  #header-component .header__columns .account-button { display: none; }
   .pl-redesign-hero__inner { display: block; min-height: 470px; }
   .pl-redesign-hero__visual { position: absolute; top: 0; right: 0; width: 100%; min-height: 100%; pointer-events: none; }
   .pl-redesign-hero__product { display: none; }

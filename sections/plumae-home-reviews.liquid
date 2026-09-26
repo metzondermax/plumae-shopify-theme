@@ -4,7 +4,10 @@
     <div class="pl-redesign-reviews__grid">
       {% for block in section.blocks %}
         <blockquote class="pl-redesign-review plumae-reveal" {{ block.shopify_attributes }}>
-          <img src="{{ 'sterretjes.png' | file_url }}" width="190" height="38" loading="lazy" alt="" aria-hidden="true">
+          <span class="pl-redesign-review__stars" role="img" aria-label="Vijf sterren">
+            <img src="{{ 'sterretjes.png' | file_url }}" width="190" height="38" loading="lazy" alt="" onload="this.nextElementSibling.hidden=true" onerror="this.hidden=true">
+            <span aria-hidden="true">★★★★★</span>
+          </span>
           <p>{{ block.settings.quote }}</p>
           <cite>{{ block.settings.name }}</cite>
         </blockquote>
