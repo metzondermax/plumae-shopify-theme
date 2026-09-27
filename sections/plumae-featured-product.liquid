@@ -2,12 +2,18 @@
   assign featured_product = section.settings.product
   assign variant = featured_product.selected_or_first_available_variant
   assign product_form_id = 'PlumaeHomeProduct-' | append: section.id
+  assign featured_image = section.settings.image | default: featured_product.featured_image
 %}
 <section class="pl-redesign-product{% if template.name == 'collection' %} pl-redesign-product--collection{% endif %}" id="basisset">
   <div class="plumae-shell pl-redesign-product__inner">
     <div class="pl-redesign-product__visual plumae-reveal">
       <span class="pl-redesign-product__badge">Bestseller</span>
-      <img class="pl-redesign-product__box" src="{{ 'basisset_3d_e2947c8a-7167-4929-a452-8d773504c1d4.png' | file_url }}" width="1254" height="1254" loading="lazy" alt="Wat eten we vandaag? Basisset">
+      {% if featured_image != blank %}
+        {% assign featured_alt = featured_image.alt | default: 'Wat eten we vandaag? Basisset' %}
+        {{ featured_image | image_url: width: 1100 | image_tag: class: 'pl-redesign-product__box', loading: 'lazy', widths: '320, 480, 720, 1100', sizes: '(min-width: 750px) 45vw, 90vw', alt: featured_alt }}
+      {% else %}
+        <img class="pl-redesign-product__box" src="{{ 'basisset_3d_e2947c8a-7167-4929-a452-8d773504c1d4.png' | file_url }}" width="1254" height="1254" loading="lazy" alt="Wat eten we vandaag? Basisset">
+      {% endif %}
       {% if template.name == 'index' %}
         <img class="pl-redesign-product__groente" src="{{ 'groentemannetje.png' | file_url }}" width="510" height="560" loading="lazy" alt="">
         <img class="pl-redesign-product__effect pl-redesign-product__effect--left" src="{{ 'effect_1.png' | file_url }}" width="150" height="150" loading="lazy" alt="">
@@ -48,6 +54,7 @@
   "name": "Plumae: nieuwe basisset",
   "settings": [
     { "type": "product", "id": "product", "label": "Basisset" },
+    { "type": "image_picker", "id": "image", "label": "Afbeelding (leeg = eerste productfoto)" },
     { "type": "text", "id": "label", "label": "Bovenregel", "default": "De basisset" },
     { "type": "text", "id": "heading", "label": "Kop", "default": "Wat eten we vandaag?" },
     { "type": "richtext", "id": "text", "label": "Korte tekst", "default": "<p>Speel samen en maak van de vraag wat er op tafel komt een gezellig spelmoment.</p>" },

@@ -430,7 +430,11 @@
 
     {% if render_slideshow_arrows %}
       {% capture slideshow_arrows %}
-        {% render 'slideshow-arrows', class: 'mobile:hidden', icon_style: block_settings.icons_style %}
+        {% if request.page_type == 'product' %}
+          {% render 'slideshow-arrows', icon_style: block_settings.icons_style %}
+        {% else %}
+          {% render 'slideshow-arrows', class: 'mobile:hidden', icon_style: block_settings.icons_style %}
+        {% endif %}
       {% endcapture %}
     {% endif %}
 
