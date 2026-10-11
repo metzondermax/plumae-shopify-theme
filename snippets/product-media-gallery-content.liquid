@@ -164,7 +164,11 @@
     assign lowest_aspect_ratio_index = 0
 
     for media in sorted_media
-      # Find the media with the lowest aspect ratio (tallest)
+      # Let photos set the gallery height when a product also has portrait video.
+      # A video-only gallery still uses its video ratio.
+      if has_image_drop and media.media_type != 'image'
+        continue
+      endif
 
       if media.preview_image and media.preview_image.aspect_ratio
         if media.preview_image.aspect_ratio < lowest_aspect_ratio
