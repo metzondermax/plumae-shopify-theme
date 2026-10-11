@@ -8,6 +8,11 @@
   section: section
 %}
 
+{%- assign plumae_product_videos = closest.product.media | where: 'media_type', 'video' -%}
+{%- if closest.product.handle == 'wat-eten-we-vandaag-basisset' and plumae_product_videos.size > 0 -%}
+  <p class="plumae-product-video-credit">Video door <a href="https://www.instagram.com/rugzakenrozijntjes/" target="_blank" rel="noopener noreferrer">@rugzakenrozijntjes</a></p>
+{%- endif -%}
+
 {% schema %}
 {
   "name": "t:names.product_media",
