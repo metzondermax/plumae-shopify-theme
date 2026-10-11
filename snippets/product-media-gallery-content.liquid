@@ -382,7 +382,7 @@
         {% endcapture %}
         {% if block_settings.aspect_ratio == 'adapt' %}
           {% capture style %}
-            {% if media_presentation == 'carousel' and has_image_drop and media.media_type != 'image' %}
+            {% if media.media_type == 'video' and has_image_drop %}
               --media-preview-ratio: {{ lowest_aspect_ratio }};
             {% else %}
               --media-preview-ratio: {{ media.preview_image.aspect_ratio | default: 1.0 }};
