@@ -223,3 +223,6 @@
 @media (max-width: 749px) { .pl-bundle-offer { padding: 18px; } .pl-bundle-offer__choices a { flex: 1 1 30%; } }
 .pl-redesign-hero__offer[hidden] { display: none !important; }
 .pl-redesign-hero__offer { max-width: 440px; margin: 12px 0 0; color: #f1eada; font-size: .95rem; font-weight: 750; }
+
+.plumae-product-video-credit { margin: 10px 0 0; color: #475a61; font-size: .85rem; line-height: 1.4; }
+.plumae-product-video-credit a { color: #a64631; text-underline-offset: 2px; }
