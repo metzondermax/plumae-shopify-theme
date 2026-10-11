@@ -74,3 +74,17 @@
   init();
   document.addEventListener('shopify:section:load', (event) => init(event.target));
 })();
+
+(() => {
+  const start = Date.parse('2026-10-12T07:00:00Z'); // 09:00 Europe/Amsterdam
+  const end = Date.parse('2026-10-18T19:00:00Z');   // 21:00 Europe/Amsterdam
+  function updateOffers(root = document) {
+    const active = Date.now() >= start && Date.now() < end;
+    root.querySelectorAll('[data-pl-bundle-offer]').forEach((offer) => {
+      offer.hidden = !active;
+    });
+  }
+  updateOffers();
+  document.addEventListener('shopify:section:load', (event) => updateOffers(event.target));
+  window.setInterval(updateOffers, 60000);
+})();

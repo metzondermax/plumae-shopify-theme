@@ -11,6 +11,7 @@
       <a class="pl-redesign-image-button pl-redesign-image-button--large" href="{{ product_url }}">
         {% if featured_product != blank %}Basisset voor {{ featured_product.price | money }}{% else %}Bekijk de basisset{% endif %}
       </a>
+      {% if featured_product.price == 1995 %}<p class="pl-redesign-hero__offer" data-pl-bundle-offer hidden>Deze week: basisset + 1 uitbreiding voor €24,95</p>{% endif %}
       <p class="pl-redesign-hero__hint">{{ section.settings.hint }}</p>
     </div>
     <div class="pl-redesign-hero__visual plumae-reveal" aria-hidden="true">
