@@ -382,7 +382,11 @@
         {% endcapture %}
         {% if block_settings.aspect_ratio == 'adapt' %}
           {% capture style %}
-            --media-preview-ratio: {{ media.preview_image.aspect_ratio | default: 1.0 }};
+            {% if media_presentation == 'carousel' and has_image_drop and media.media_type != 'image' %}
+              --media-preview-ratio: {{ lowest_aspect_ratio }};
+            {% else %}
+              --media-preview-ratio: {{ media.preview_image.aspect_ratio | default: 1.0 }};
+            {% endif %}
           {% endcapture %}
         {% endif %}
         {% if block_settings.zoom and media.media_type == 'model' %}
