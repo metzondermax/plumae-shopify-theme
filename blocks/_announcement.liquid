@@ -28,11 +28,7 @@
     aria-hidden="{% if block_index == 0 %}false{% else %}true{% endif %}"
   >
     <p class="announcement-bar__text">
-      {% if block_index == 0 %}
-        {% render 'plumae-bundle-offer', placement: 'announcement', fallback_text: block.settings.text %}
-      {% else %}
-        {{ block.settings.text }}
-      {% endif %}
+      {{ block.settings.text }}
     </p>
 
     {% if block_settings.link != blank %}
