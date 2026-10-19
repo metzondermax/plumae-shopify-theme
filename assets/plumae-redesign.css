@@ -206,21 +206,15 @@
 }
 
 
-/* Basisset + uitbreiding, actief van 12 okt 09:00 tot 18 okt 21:00 (Amsterdam). */
-.pl-bundle-offer[hidden] { display: none !important; }
-.pl-bundle-offer { width: 100%; padding: 20px 22px; border: 1px solid rgba(195, 89, 67, .32); border-radius: 16px; background: #fffdf8; color: #475a61; }
-.pl-bundle-offer__eyebrow { margin: 0 0 5px; color: #c35943; font-size: .78rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
-.pl-bundle-offer__title { margin: 0 0 8px; color: #475a61; font-size: clamp(1.25rem, 2.6vw, 1.65rem); line-height: 1.2; }
-.pl-bundle-offer__title strong { color: #c35943; white-space: nowrap; }
-.pl-bundle-offer__copy, .pl-bundle-offer__instruction { margin: 0; font-size: .94rem; line-height: 1.5; }
-.pl-bundle-offer__instruction { margin-top: 12px; font-weight: 700; }
-.pl-bundle-offer__choices { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 11px; }
-.pl-bundle-offer__choices a, .pl-bundle-offer__link { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 9px 15px; border: 1px solid #c35943; border-radius: 9px; color: #a64631; font-weight: 750; text-decoration: none; }
-.pl-bundle-offer__choices a:hover, .pl-bundle-offer__link:hover { background: #c35943; color: #fffdf8; }
-.pl-bundle-offer__choices a:focus-visible, .pl-bundle-offer__link:focus-visible { outline: 3px solid #475a61; outline-offset: 3px; }
-.pl-bundle-offer--home { margin: 0 0 22px; }
-.pl-bundle-offer--home .pl-bundle-offer__link { margin-top: 14px; }
-@media (max-width: 749px) { .pl-bundle-offer { padding: 18px; } .pl-bundle-offer__choices a { flex: 1 1 30%; } }
+/* Gratis verzending op de basisset, 19–25 oktober 2026. */
+.pl-shipping-offer[hidden], [data-pl-shipping-offer][hidden], [data-pl-shipping-default][hidden] { display: none !important; }
+.pl-shipping-offer { width: 100%; padding: 20px 22px; border: 1px solid rgba(195, 89, 67, .32); border-radius: 16px; background: #fffdf8; color: #475a61; }
+.pl-shipping-offer__eyebrow { margin: 0 0 5px; color: #c35943; font-size: .78rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+.pl-shipping-offer__title { margin: 0 0 8px; color: #475a61; font-size: clamp(1.25rem, 2.6vw, 1.65rem); line-height: 1.2; }
+.pl-shipping-offer__title strong { color: #c35943; }
+.pl-shipping-offer__copy { margin: 0; font-size: .94rem; line-height: 1.5; }
+.pl-shipping-offer--home { margin: 0 0 22px; }
+@media (max-width: 749px) { .pl-shipping-offer { padding: 18px; } }
 .pl-redesign-hero__offer[hidden] { display: none !important; }
 .pl-redesign-hero__offer { max-width: 440px; margin: 12px 0 0; color: #f1eada; font-size: .95rem; font-weight: 750; }
 
