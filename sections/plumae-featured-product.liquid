@@ -31,7 +31,7 @@
         {% else %}<span>Prijs wordt getoond zodra de basisset is geselecteerd.</span>{% endif %}
       </p>
       {% if section.settings.text != blank %}<div class="pl-redesign-product__description">{{ section.settings.text }}</div>{% endif %}
-      {% if template.name == 'index' %}{% render 'plumae-shipping-campaign', promo_product: featured_product, placement: 'home' %}{% endif %}
+      {% if template.name == 'index' %}{% render 'plumae-bundle-offer', promo_product: featured_product, placement: 'home' %}{% endif %}
       {% if template.name == 'collection' %}
         <a class="pl-redesign-image-button pl-redesign-image-button--wide" href="{{ featured_product.url | default: '/products/wat-eten-we-vandaag-basisset' }}">{{ section.settings.button_label | default: 'Bekijk de basisset' }}</a>
       {% elsif featured_product != blank and variant != blank %}
