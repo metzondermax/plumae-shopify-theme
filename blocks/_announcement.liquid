@@ -28,7 +28,11 @@
     aria-hidden="{% if block_index == 0 %}false{% else %}true{% endif %}"
   >
     <p class="announcement-bar__text">
-      {{ block.settings.text }}
+      {% if section.settings.plumae_shipping_campaign and block_index == 0 %}
+        {% render 'plumae-shipping-campaign', placement: 'announcement', fallback_text: block.settings.text %}
+      {% else %}
+        {{ block.settings.text }}
+      {% endif %}
     </p>
 
     {% if block_settings.link != blank %}
