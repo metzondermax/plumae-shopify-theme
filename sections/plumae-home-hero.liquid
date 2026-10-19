@@ -11,7 +11,7 @@
       <a class="pl-redesign-image-button pl-redesign-image-button--large" href="{{ product_url }}">
         {% if featured_product != blank %}Basisset voor {{ featured_product.price | money }}{% else %}Bekijk de basisset{% endif %}
       </a>
-      {% render 'plumae-shipping-campaign', promo_product: featured_product, placement: 'hero' %}
+      {% render 'plumae-bundle-offer', promo_product: featured_product, placement: 'hero' %}
       <p class="pl-redesign-hero__hint">{{ section.settings.hint }}</p>
     </div>
     <div class="pl-redesign-hero__visual plumae-reveal" aria-hidden="true">
