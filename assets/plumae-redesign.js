@@ -76,12 +76,15 @@
 })();
 
 (() => {
-  const start = Date.parse('2026-10-12T07:00:00Z'); // 09:00 Europe/Amsterdam
-  const end = Date.parse('2026-10-18T19:00:00Z');   // 21:00 Europe/Amsterdam
+  const start = Date.parse('2026-10-19T07:00:00Z'); // 19 okt 09:00 Europe/Amsterdam
+  const end = Date.parse('2026-10-25T20:00:00Z');   // 25 okt 21:00 Europe/Amsterdam (wintertijd)
   function updateOffers(root = document) {
     const active = Boolean(window.Shopify?.designMode) || (Date.now() >= start && Date.now() < end);
-    root.querySelectorAll('[data-pl-bundle-offer]').forEach((offer) => {
+    root.querySelectorAll('[data-pl-shipping-offer]').forEach((offer) => {
       offer.hidden = !active;
+    });
+    root.querySelectorAll('[data-pl-shipping-default]').forEach((defaultMessage) => {
+      defaultMessage.hidden = active;
     });
   }
   updateOffers();
