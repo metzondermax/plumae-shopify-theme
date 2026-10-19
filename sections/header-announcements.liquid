@@ -8,6 +8,17 @@
   ></script>
 {% endif %}
 
+{% liquid
+  assign campaign_now = 'now' | date: '%s' | plus: 0
+  assign campaign_active = false
+  if campaign_now >= 1792393200 and campaign_now < 1792958400
+    assign campaign_active = true
+  endif
+  if request.design_mode
+    assign campaign_active = true
+  endif
+%}
+
 {% render 'contrast-override', background_color: section.settings.background_color, section_id: section.id %}
 
 <div class="section-background color-custom-{{ section.id }}"></div>
@@ -24,6 +35,8 @@
     endif
   %}
 
+  <p class="announcement-bar__campaign" data-pl-shipping-offer {% unless campaign_active %}hidden{% endunless %}>Deze week: gratis verzending op de basisset in Nederland en België</p>
+  <div class="announcement-bar__regular" data-pl-shipping-default {% if campaign_active %}hidden{% endif %}>
   <announcement-bar-component
     class="announcement-bar__slider"
     {% if autoplay == true %}
@@ -38,9 +51,12 @@
       {% content_for 'blocks' %}
     </div>
   </announcement-bar-component>
+  </div>
 </aside>
 
 {% stylesheet %}
+  .announcement-bar__campaign { width: 100%; margin: 0; color: #f1eada; text-align: center; font-family: var(--font-subheading--family); font-size: .875rem; line-height: 1; }
+  .announcement-bar__regular { width: 100%; }
   .announcement-bar {
     border-block-end: var(--border-bottom-width) solid var(--color-border);
   }
