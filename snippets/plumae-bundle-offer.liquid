@@ -1,21 +1,27 @@
-{%- liquid
-  assign offer_product = promo_product
+{% liquid
   assign offer_scope = placement | default: 'product'
--%}
-{%- if offer_product.handle == 'wat-eten-we-vandaag-basisset' and offer_product.price == 1995 -%}
-  <aside class="pl-bundle-offer pl-bundle-offer--{{ offer_scope }}" data-pl-bundle-offer hidden>
-    <p class="pl-bundle-offer__eyebrow">Tijdelijke actie</p>
-    <h3 class="pl-bundle-offer__title">Basisset + 1 uitbreiding <strong>voor €24,95</strong></h3>
-    <p class="pl-bundle-offer__copy">Kies zelf Budget, Gezond of Pasta. De €5 bundelkorting wordt automatisch in de winkelwagen verrekend.</p>
-    {%- if offer_scope == 'product' -%}
-      <p class="pl-bundle-offer__instruction">Voeg de basisset toe en kies daarna je uitbreiding:</p>
-      <nav class="pl-bundle-offer__choices" aria-label="Kies een uitbreiding">
-        <a href="/products/wat-eten-we-vandaag-budget-uitbreiding">Budget</a>
-        <a href="/products/wat-eten-we-vandaag-gezond-uitbreiding">Gezond</a>
-        <a href="/products/wat-eten-we-vandaag-pasta-uitbreiding">Pasta</a>
-      </nav>
-    {%- else -%}
-      <a class="pl-bundle-offer__link" href="{{ offer_product.url }}">Kies je uitbreiding <span aria-hidden="true">→</span></a>
-    {%- endif -%}
-  </aside>
-{%- endif -%}
+  assign campaign_now = 'now' | date: '%s' | plus: 0
+  assign campaign_start = 1792393200
+  assign campaign_end = 1792958400
+  assign campaign_active = false
+  if campaign_now >= campaign_start and campaign_now < campaign_end
+    assign campaign_active = true
+  endif
+  if request.design_mode
+    assign campaign_active = true
+  endif
+%}
+{% if offer_scope == 'announcement' %}
+  <span data-pl-shipping-offer {% unless campaign_active %}hidden{% endunless %}>Deze week: gratis verzending op de basisset in Nederland en België</span>
+  <span data-pl-shipping-default {% if campaign_active %}hidden{% endif %}>{{ fallback_text }}</span>
+{% elsif promo_product.handle == 'wat-eten-we-vandaag-basisset' %}
+  {% if offer_scope == 'hero' %}
+    <p class="pl-redesign-hero__offer" data-pl-shipping-offer {% unless campaign_active %}hidden{% endunless %}>Deze week: gratis verzending op de basisset in Nederland en België</p>
+  {% else %}
+    <aside class="pl-shipping-offer pl-shipping-offer--{{ offer_scope }}" data-pl-shipping-offer {% unless campaign_active %}hidden{% endunless %}>
+      <p class="pl-shipping-offer__eyebrow">Actieweek · t/m zondag 21:00 uur</p>
+      <h3 class="pl-shipping-offer__title">Basisset voor {{ promo_product.price | money }} <strong>+ gratis verzending</strong></h3>
+      <p class="pl-shipping-offer__copy">Bestel de basisset met gratis verzending in Nederland en België. Je ziet de verzendkostenkorting bij het afrekenen.</p>
+    </aside>
+  {% endif %}
+{% endif %}
