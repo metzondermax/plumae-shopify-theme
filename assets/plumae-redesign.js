@@ -76,8 +76,8 @@
 })();
 
 (() => {
-  const start = Date.parse('2026-10-19T07:00:00Z'); // 19 okt 09:00 Europe/Amsterdam
-  const end = Date.parse('2026-10-25T20:00:00Z');   // 25 okt 21:00 Europe/Amsterdam (wintertijd)
+  const start = Date.parse('2026-10-26T08:00:00Z'); // 26 okt 09:00 Europe/Amsterdam
+  const end = Date.parse('2026-11-01T20:00:00Z');   // 1 nov 21:00 Europe/Amsterdam
   function updateOffers(root = document) {
     const active = Boolean(window.Shopify?.designMode) || (Date.now() >= start && Date.now() < end);
     root.querySelectorAll('[data-pl-shipping-offer]').forEach((offer) => {
