@@ -1,8 +1,8 @@
 {% liquid
   assign offer_scope = placement | default: 'product'
   assign campaign_now = 'now' | date: '%s' | plus: 0
-  assign campaign_start = 1792393200
-  assign campaign_end = 1792958400
+  assign campaign_start = 1793001600
+  assign campaign_end = 1793563200
   assign campaign_active = false
   if campaign_now >= campaign_start and campaign_now < campaign_end
     assign campaign_active = true
