@@ -11,7 +11,7 @@
 {% liquid
   assign campaign_now = 'now' | date: '%s' | plus: 0
   assign campaign_active = false
-  if campaign_now >= 1792393200 and campaign_now < 1792958400
+  if campaign_now >= 1793001600 and campaign_now < 1793563200
     assign campaign_active = true
   endif
   if request.design_mode
