@@ -75,19 +75,3 @@
   document.addEventListener('shopify:section:load', (event) => init(event.target));
 })();
 
-(() => {
-  const start = Date.parse('2026-10-26T08:00:00Z'); // 26 okt 09:00 Europe/Amsterdam
-  const end = Date.parse('2026-11-01T20:00:00Z');   // 1 nov 21:00 Europe/Amsterdam
-  function updateOffers(root = document) {
-    const active = Boolean(window.Shopify?.designMode) || (Date.now() >= start && Date.now() < end);
-    root.querySelectorAll('[data-pl-shipping-offer]').forEach((offer) => {
-      offer.hidden = !active;
-    });
-    root.querySelectorAll('[data-pl-shipping-default]').forEach((defaultMessage) => {
-      defaultMessage.hidden = active;
-    });
-  }
-  updateOffers();
-  document.addEventListener('shopify:section:load', (event) => updateOffers(event.target));
-  window.setInterval(updateOffers, 60000);
-})();
