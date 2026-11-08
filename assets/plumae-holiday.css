@@ -125,3 +125,17 @@ body.pl-holiday--blackfriday .pl-holiday-product-note__text { color: #f1eada; }
   body.pl-holiday .plumae-hero::after { height: 6px; background-size: 64px 6px; }
   .pl-holiday-product-note { padding: 14px 15px; }
 }
+
+body.pl-holiday--sinterklaas .announcement-bar,
+body.pl-holiday--christmas .announcement-bar {
+  background: #c35943;
+  color: #f1eada;
+}
+body.pl-holiday--blackfriday .announcement-bar {
+  background: #171717;
+  color: #f5dfaa;
+}
+body.pl-holiday--newyear .announcement-bar {
+  background: #475a61;
+  color: #f1eada;
+}
