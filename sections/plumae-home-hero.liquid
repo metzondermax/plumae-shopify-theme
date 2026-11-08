@@ -11,14 +11,65 @@
     assign has_custom_image = true
     assign hero_alt = section.settings.image.alt | default: section.settings.heading
   endif
+
+  assign pl_date = 'now' | date: '%Y%m%d' | plus: 0
+  assign pl_campaign = ''
+  assign pl_heading = section.settings.heading
+  assign pl_text = section.settings.text
+  assign pl_eyebrow = section.settings.eyebrow
+  assign pl_primary_label = section.settings.primary_label
+  assign pl_file_image = ''
+
+  if pl_date >= 20261108 and pl_date <= 20261125
+    assign pl_campaign = 'sinterklaas'
+  elsif pl_date >= 20261126 and pl_date <= 20261130
+    assign pl_campaign = 'blackfriday'
+  elsif pl_date >= 20261201 and pl_date <= 20261205
+    assign pl_campaign = 'sinterklaas'
+  elsif pl_date >= 20261206 and pl_date <= 20261226
+    assign pl_campaign = 'christmas'
+  elsif pl_date >= 20261227 and pl_date <= 20261231
+    assign pl_campaign = 'newyear'
+  endif
+
+  case pl_campaign
+    when 'sinterklaas'
+      assign pl_eyebrow = 'Wat eten we vandaag?'
+      assign pl_heading = 'Het cadeau voor het hele gezin'
+      assign pl_text = '<p>Een kaartspel waarmee je samen in vijf minuten je weekmenu kiest. Nu €19,95 + gratis verzending.</p>'
+      assign pl_primary_label = 'Bekijk het cadeau'
+      assign pl_file_image = 'sinterklaas2.png'
+      assign hero_alt = 'Wat Eten We Vandaag? als Sinterklaascadeau voor het hele gezin'
+    when 'blackfriday'
+      assign pl_eyebrow = 'Black Friday'
+      assign pl_heading = 'Kookboek, spel en maaltijdplanner. Alles in één.'
+      assign pl_text = '<p>De basisset voor €19,95 en tijdelijk gratis verzonden in Nederland en België.</p>'
+      assign pl_primary_label = 'Bekijk het spel'
+      assign pl_file_image = 'blackfriday2.png'
+      assign hero_alt = 'Black Friday bij Wat Eten We Vandaag?'
+    when 'christmas'
+      assign pl_eyebrow = 'Wat eten we vandaag?'
+      assign pl_heading = 'Nog iets voor onder de kerstboom?'
+      assign pl_text = '<p>Een cadeau waar het hele gezin ook na kerst nog iets aan heeft. Nu €19,95 + gratis verzending.</p>'
+      assign pl_primary_label = 'Bekijk het kerstcadeau'
+      assign pl_file_image = 'kerstcadeau.png'
+      assign hero_alt = 'Wat Eten We Vandaag? als cadeau onder de kerstboom'
+    when 'newyear'
+      assign pl_eyebrow = 'Wat eten we vandaag?'
+      assign pl_heading = 'Begin 2027 zonder dagelijkse keuzestress'
+      assign pl_text = '<p>Kies samen in vijf minuten je weekmenu, met recepten en boodschappenlijst in de app.</p>'
+      assign pl_primary_label = 'Bekijk de basisset'
+  endcase
 %}
 
 <section
-  class="plumae-hero"
+  class="plumae-hero{% if pl_campaign != blank %} plumae-hero--holiday plumae-hero--{{ pl_campaign }}{% endif %}"
   style="--hero-bg: {{ section.settings.background_color }}; --hero-text: {{ section.settings.text_color }}; --hero-height: {{ section.settings.height }}px; --hero-position: {{ section.settings.image_position }}; --hero-overlay: {{ section.settings.overlay_opacity | divided_by: 100.0 }};"
 >
   <div class="plumae-hero__media plumae-hero__media--cutout">
-    {% if has_custom_image %}
+    {% if pl_file_image != blank %}
+      <img src="{{ pl_file_image | file_url }}" width="1280" height="1280" loading="eager" fetchpriority="high" alt="{{ hero_alt | escape }}">
+    {% elsif has_custom_image %}
       {{ section.settings.image | image_url: width: 1800 | image_tag: loading: 'eager', fetchpriority: 'high', widths: '600, 900, 1200, 1500, 1800', sizes: '(min-width: 990px) 55vw, 100vw', alt: hero_alt }}
     {% else %}
       <img src="{{ 'plumae-basisbox-placeholder.png' | asset_url }}" width="1280" height="1280" loading="eager" fetchpriority="high" alt="Voorbeeldafbeelding van de basisset">
@@ -27,14 +78,14 @@
   <div class="plumae-hero__overlay"></div>
   <div class="plumae-shell plumae-hero__content">
     <div class="plumae-hero__copy">
-      {% if section.settings.eyebrow != blank %}<p class="plumae-hero__eyebrow">{{ section.settings.eyebrow }}</p>{% endif %}
-      <h1 class="plumae-hero__title">{{ section.settings.heading }}</h1>
-      {% if section.settings.text != blank %}<div class="plumae-hero__text plumae-rte">{{ section.settings.text }}</div>{% endif %}
+      {% if pl_eyebrow != blank %}<p class="plumae-hero__eyebrow">{{ pl_eyebrow }}</p>{% endif %}
+      <h1 class="plumae-hero__title">{{ pl_heading }}</h1>
+      {% if pl_text != blank %}<div class="plumae-hero__text plumae-rte">{{ pl_text }}</div>{% endif %}
       <div class="plumae-hero__actions">
-        {% if section.settings.primary_label != blank %}
-          <a class="plumae-button plumae-button--filled" href="{{ primary_destination }}">{{ section.settings.primary_label }}</a>
+        {% if pl_primary_label != blank %}
+          <a class="plumae-button plumae-button--filled" href="{{ primary_destination }}">{{ pl_primary_label }}</a>
         {% endif %}
-        {% if section.settings.secondary_label != blank %}
+        {% if pl_campaign == blank and section.settings.secondary_label != blank %}
           <a class="plumae-button plumae-button--outline" href="{{ section.settings.secondary_link | default: '/pages/over-ons' }}">{{ section.settings.secondary_label }}</a>
         {% endif %}
       </div>
@@ -70,6 +121,16 @@
         rgba(71, 90, 97, .72) 36%,
         rgba(71, 90, 97, .20) 56%,
         rgba(71, 90, 97, .04) 76%
+      );
+    }
+
+    #shopify-section-{{ section.id }} .plumae-hero--blackfriday .plumae-hero__overlay {
+      background: linear-gradient(
+        90deg,
+        rgba(15, 15, 15, .94) 0%,
+        rgba(15, 15, 15, .80) 38%,
+        rgba(15, 15, 15, .24) 62%,
+        rgba(15, 15, 15, .04) 80%
       );
     }
   }
