@@ -32,6 +32,10 @@
     assign pl_campaign = 'newyear'
   endif
 
+  if pl_campaign != blank
+    assign primary_destination = '/products/wat-eten-we-vandaag-basisset'
+  endif
+
   case pl_campaign
     when 'sinterklaas'
       assign pl_eyebrow = 'Wat eten we vandaag?'
