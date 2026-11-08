@@ -1,6 +1,28 @@
 
+{% liquid
+  assign pl_date = 'now' | date: '%Y%m%d' | plus: 0
+  assign pl_campaign = ''
+  assign pl_message = ''
 
-{% if section.blocks.size > 1 %}
+  if pl_date >= 20261108 and pl_date <= 20261125
+    assign pl_campaign = 'sinterklaas'
+    assign pl_message = 'Cadeau voor het hele gezin • Basisset €19,95 + gratis verzending'
+  elsif pl_date >= 20261126 and pl_date <= 20261130
+    assign pl_campaign = 'blackfriday'
+    assign pl_message = 'Black Friday • Basisset €19,95 + gratis verzending'
+  elsif pl_date >= 20261201 and pl_date <= 20261205
+    assign pl_campaign = 'sinterklaas'
+    assign pl_message = 'Nog iets voor in de zak? • €19,95 + gratis verzending'
+  elsif pl_date >= 20261206 and pl_date <= 20261226
+    assign pl_campaign = 'christmas'
+    assign pl_message = 'Voor onder de kerstboom • €19,95 + gratis verzending'
+  elsif pl_date >= 20261227 and pl_date <= 20261231
+    assign pl_campaign = 'newyear'
+    assign pl_message = 'Op naar 2027 zonder keuzestress • €19,95 + gratis verzending'
+  endif
+%}
+
+{% if pl_campaign == blank and section.blocks.size > 1 %}
   <script
     src="{{ 'announcement-bar.js' | asset_url }}"
     type="module"
@@ -15,29 +37,32 @@
   class="announcement-bar spacing-style section section--{{ section.settings.section_width }} color-custom-{{ section.id }}"
   style="{% render 'spacing-padding', settings: section.settings %}; --border-bottom-width: {{ section.settings.divider_width }}px;{% if section.settings.divider_color != blank %} --color-border: {{ section.settings.divider_color }};{% endif %}"
 >
-  {% liquid
-    assign autoplay = false
-    assign show_arrows = false
-    if section.blocks.size > 1
-      assign autoplay = true
-      assign show_arrows = true
-    endif
-  %}
+  {% if pl_campaign != blank %}
+    <a class="pl-holiday-announcement" href="/products/wat-eten-we-vandaag-basisset">{{ pl_message }}</a>
+  {% else %}
+    {% liquid
+      assign autoplay = false
+      assign show_arrows = false
+      if section.blocks.size > 1
+        assign autoplay = true
+        assign show_arrows = true
+      endif
+    %}
+    <announcement-bar-component
+      class="announcement-bar__slider"
+      {% if autoplay == true %}
+        autoplay="{{ section.settings.speed }}" aria-live="polite"
+      {% endif %}
+    >
+      {% if show_arrows %}
+        {% render 'slideshow-arrows', icon_style: 'chevron' %}
+      {% endif %}
 
-  <announcement-bar-component
-    class="announcement-bar__slider"
-    {% if autoplay == true %}
-      autoplay="{{ section.settings.speed }}" aria-live="polite"
-    {% endif %}
-  >
-    {% if show_arrows %}
-      {% render 'slideshow-arrows', icon_style: 'chevron' %}
-    {% endif %}
-
-    <div class="announcement-bar__slides">
-      {% content_for 'blocks' %}
-    </div>
-  </announcement-bar-component>
+      <div class="announcement-bar__slides">
+        {% content_for 'blocks' %}
+      </div>
+    </announcement-bar-component>
+  {% endif %}
 </aside>
 
 {% stylesheet %}
