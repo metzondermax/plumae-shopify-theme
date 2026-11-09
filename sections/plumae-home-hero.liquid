@@ -1,24 +1,87 @@
 {% liquid
   assign featured_product = section.settings.product
   assign product_url = featured_product.url | default: '/products/wat-eten-we-vandaag-basisset'
+  assign pl_date = 'now' | date: '%Y%m%d' | plus: 0
+  assign pl_campaign = ''
+  assign pl_eyebrow = section.settings.eyebrow
+  assign pl_title_line_1 = 'Maak samen'
+  assign pl_title_line_2 = 'in <span>5 minuten</span>'
+  assign pl_title_line_3 = 'je weekmenu'
+  assign pl_description = section.settings.description
+  assign pl_cta = ''
+  assign pl_image = 'basisset_3d_e2947c8a-7167-4929-a452-8d773504c1d4.png'
+  assign pl_image_alt = ''
+
+  if pl_date >= 20261108 and pl_date <= 20261125
+    assign pl_campaign = 'sinterklaas'
+  elsif pl_date >= 20261126 and pl_date <= 20261130
+    assign pl_campaign = 'blackfriday'
+  elsif pl_date >= 20261201 and pl_date <= 20261205
+    assign pl_campaign = 'sinterklaas'
+  elsif pl_date >= 20261206 and pl_date <= 20261226
+    assign pl_campaign = 'christmas'
+  elsif pl_date >= 20261227 and pl_date <= 20261231
+    assign pl_campaign = 'newyear'
+  endif
+
+  case pl_campaign
+    when 'sinterklaas'
+      assign pl_eyebrow = 'Wat eten we vandaag?'
+      assign pl_title_line_1 = 'Het cadeau'
+      assign pl_title_line_2 = 'voor het <span>hele gezin</span>'
+      assign pl_title_line_3 = ''
+      assign pl_description = 'Een kaartspel waarmee je samen in vijf minuten je weekmenu kiest. Nu €19,95 + gratis verzending.'
+      assign pl_cta = 'Bekijk het cadeau'
+      assign pl_image = 'sinterklaas2.png'
+      assign pl_image_alt = 'Wat Eten We Vandaag? als Sinterklaascadeau voor het hele gezin'
+    when 'blackfriday'
+      assign pl_eyebrow = 'Black Friday'
+      assign pl_title_line_1 = 'Kookboek, spel'
+      assign pl_title_line_2 = 'en <span>maaltijdplanner</span>'
+      assign pl_title_line_3 = 'alles in één'
+      assign pl_description = 'De basisset voor €19,95 en tijdelijk gratis verzonden in Nederland en België.'
+      assign pl_cta = 'Bekijk het spel'
+      assign pl_image = 'blackfriday2.png'
+      assign pl_image_alt = 'Black Friday bij Wat Eten We Vandaag?'
+    when 'christmas'
+      assign pl_eyebrow = 'Wat eten we vandaag?'
+      assign pl_title_line_1 = 'Nog iets voor'
+      assign pl_title_line_2 = 'onder de <span>kerstboom?</span>'
+      assign pl_title_line_3 = ''
+      assign pl_description = 'Een cadeau waar het hele gezin ook na kerst nog iets aan heeft. Nu €19,95 + gratis verzending.'
+      assign pl_cta = 'Bekijk het kerstcadeau'
+      assign pl_image = 'kerstcadeau.png'
+      assign pl_image_alt = 'Wat Eten We Vandaag? als cadeau onder de kerstboom'
+    when 'newyear'
+      assign pl_eyebrow = 'Wat eten we vandaag?'
+      assign pl_title_line_1 = 'Begin 2027'
+      assign pl_title_line_2 = 'zonder <span>keuzestress</span>'
+      assign pl_title_line_3 = ''
+      assign pl_description = 'Kies samen in vijf minuten je weekmenu, met recepten en boodschappenlijst in de app.'
+      assign pl_cta = 'Bekijk de basisset'
+  endcase
 %}
-<section class="pl-redesign-hero" style="--pl-hero-bg: {{ section.settings.background_color }}; --wall-w-d: {{ section.settings.wall_w_d }}px; --wall-x-d: {{ section.settings.wall_x_d }}px; --wall-y-d: {{ section.settings.wall_y_d }}px; --wall-w-m: {{ section.settings.wall_w_m }}px; --wall-x-m: {{ section.settings.wall_x_m }}px; --wall-y-m: {{ section.settings.wall_y_m }}px; --hanger-w-d: {{ section.settings.hanger_w_d }}px; --hanger-x-d: {{ section.settings.hanger_x_d }}px; --hanger-y-d: {{ section.settings.hanger_y_d }}px; --hanger-w-m: {{ section.settings.hanger_w_m }}px; --hanger-x-m: {{ section.settings.hanger_x_m }}px; --hanger-y-m: {{ section.settings.hanger_y_m }}px;">
+<section class="pl-redesign-hero{% if pl_campaign != blank %} pl-redesign-hero--{{ pl_campaign }}{% endif %}" style="--pl-hero-bg: {{ section.settings.background_color }}; --wall-w-d: {{ section.settings.wall_w_d }}px; --wall-x-d: {{ section.settings.wall_x_d }}px; --wall-y-d: {{ section.settings.wall_y_d }}px; --wall-w-m: {{ section.settings.wall_w_m }}px; --wall-x-m: {{ section.settings.wall_x_m }}px; --wall-y-m: {{ section.settings.wall_y_m }}px; --hanger-w-d: {{ section.settings.hanger_w_d }}px; --hanger-x-d: {{ section.settings.hanger_x_d }}px; --hanger-y-d: {{ section.settings.hanger_y_d }}px; --hanger-w-m: {{ section.settings.hanger_w_m }}px; --hanger-x-m: {{ section.settings.hanger_x_m }}px; --hanger-y-m: {{ section.settings.hanger_y_m }}px;">
   <div class="pl-redesign-hero__inner plumae-shell">
     <div class="pl-redesign-hero__copy plumae-reveal">
-      <p class="pl-redesign-hero__eyebrow">{{ section.settings.eyebrow }}</p>
-      <h1 class="pl-redesign-hero__title">Maak samen<br>in <span>5 minuten</span><br>je weekmenu</h1>
-      <p class="pl-redesign-hero__description">{{ section.settings.description }}</p>
+      <p class="pl-redesign-hero__eyebrow">{{ pl_eyebrow }}</p>
+      <h1 class="pl-redesign-hero__title">{{ pl_title_line_1 }}{% if pl_title_line_2 != blank %}<br>{{ pl_title_line_2 }}{% endif %}{% if pl_title_line_3 != blank %}<br>{{ pl_title_line_3 }}{% endif %}</h1>
+      <p class="pl-redesign-hero__description">{{ pl_description }}</p>
       <a class="pl-redesign-image-button pl-redesign-image-button--large" href="{{ product_url }}">
-        {% if featured_product != blank %}Basisset voor {{ featured_product.price | money }}{% else %}Bekijk de basisset{% endif %}
+        {% if pl_cta != blank %}{{ pl_cta }}{% elsif featured_product != blank %}Basisset voor {{ featured_product.price | money }}{% else %}Bekijk de basisset{% endif %}
       </a>
       {% render 'plumae-bundle-offer', promo_product: featured_product, placement: 'hero' %}
       <p class="pl-redesign-hero__hint">{{ section.settings.hint }}</p>
     </div>
     <div class="pl-redesign-hero__visual plumae-reveal" aria-hidden="true">
-      <img class="pl-redesign-hero__product" src="{{ 'basisset_3d_e2947c8a-7167-4929-a452-8d773504c1d4.png' | file_url }}" width="1254" height="1254" alt="" loading="lazy">
-      <img class="pl-redesign-hero__wall" src="{{ 'stickmanmuur.png' | file_url }}" width="210" height="330" alt="">
+      <img class="pl-redesign-hero__product" src="{{ pl_image | file_url }}" width="1254" height="1254" alt="{{ pl_image_alt | escape }}" loading="eager">
+      {% if pl_campaign == blank %}
+        <img class="pl-redesign-hero__wall" src="{{ 'stickmanmuur.png' | file_url }}" width="210" height="330" alt="">
+      {% endif %}
     </div>
-    <img class="pl-redesign-hero__hanger" src="{{ 'stickmanvallen.png' | file_url }}" width="500" height="500" loading="lazy" alt="" aria-hidden="true">
+    {% if pl_campaign == blank %}
+      <img class="pl-redesign-hero__hanger" src="{{ 'stickmanvallen.png' | file_url }}" width="500" height="500" loading="lazy" alt="" aria-hidden="true">
+    {% endif %}
   </div>
 </section>
 
