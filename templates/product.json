@@ -276,6 +276,11 @@
               },
               "block_order": []
             },
+            "plumae_holiday_gift": {
+              "type": "plumae-holiday-note",
+              "settings": {},
+              "blocks": {}
+            },
             "plumae_bundle_offer": {
               "type": "plumae-bundle-offer",
               "settings": {},
@@ -321,6 +326,7 @@
             "divider_VJhene",
             "variant_picker_R3rGDr",
             "buy_buttons_eYQEYi",
+            "plumae_holiday_gift",
             "plumae_bundle_offer",
             "text_aEtTtq",
             "plumae_product_safety"
