@@ -1,12 +1,25 @@
+{% liquid
+  assign pl_date = 'now' | date: '%Y%m%d' | plus: 0
+  assign pl_campaign = ''
+  assign pl_message = 'Gratis verzending op de basisset in Nederland en België'
 
-
-{% if section.blocks.size > 1 %}
-  <script
-    src="{{ 'announcement-bar.js' | asset_url }}"
-    type="module"
-    fetchpriority="low"
-  ></script>
-{% endif %}
+  if pl_date >= 20261108 and pl_date <= 20261125
+    assign pl_campaign = 'sinterklaas'
+    assign pl_message = 'Cadeau voor het hele gezin • Basisset €19,95 + gratis verzending'
+  elsif pl_date >= 20261126 and pl_date <= 20261130
+    assign pl_campaign = 'blackfriday'
+    assign pl_message = 'Black Friday • Basisset €19,95 + gratis verzending'
+  elsif pl_date >= 20261201 and pl_date <= 20261205
+    assign pl_campaign = 'sinterklaas'
+    assign pl_message = 'Nog iets voor in de zak? • €19,95 + gratis verzending'
+  elsif pl_date >= 20261206 and pl_date <= 20261226
+    assign pl_campaign = 'christmas'
+    assign pl_message = 'Voor onder de kerstboom • €19,95 + gratis verzending'
+  elsif pl_date >= 20261227 and pl_date <= 20261231
+    assign pl_campaign = 'newyear'
+    assign pl_message = 'Op naar 2027 zonder keuzestress • €19,95 + gratis verzending'
+  endif
+%}
 
 {% render 'contrast-override', background_color: section.settings.background_color, section_id: section.id %}
 
@@ -15,119 +28,13 @@
   class="announcement-bar spacing-style section section--{{ section.settings.section_width }} color-custom-{{ section.id }}"
   style="{% render 'spacing-padding', settings: section.settings %}; --border-bottom-width: {{ section.settings.divider_width }}px;{% if section.settings.divider_color != blank %} --color-border: {{ section.settings.divider_color }};{% endif %}"
 >
-  {% liquid
-    assign autoplay = false
-    assign show_arrows = false
-    if section.blocks.size > 1
-      assign autoplay = true
-      assign show_arrows = true
-    endif
-  %}
-
-  <p class="announcement-bar__campaign" data-pl-shipping-offer>Gratis verzending op de basisset in Nederland en België</p>
-  <div class="announcement-bar__regular" data-pl-shipping-default hidden>
-  <announcement-bar-component
-    class="announcement-bar__slider"
-    {% if autoplay == true %}
-      autoplay="{{ section.settings.speed }}" aria-live="polite"
-    {% endif %}
-  >
-    {% if show_arrows %}
-      {% render 'slideshow-arrows', icon_style: 'chevron' %}
-    {% endif %}
-
-    <div class="announcement-bar__slides">
-      {% content_for 'blocks' %}
-    </div>
-  </announcement-bar-component>
-  </div>
+  <a class="pl-holiday-announcement" href="/products/wat-eten-we-vandaag-basisset">{{ pl_message }}</a>
 </aside>
 
 {% stylesheet %}
   .announcement-bar__campaign { width: 100%; margin: 0; color: #f1eada; text-align: center; font-family: var(--font-subheading--family); font-size: .875rem; line-height: 1; }
   .announcement-bar__regular { width: 100%; }
-  .announcement-bar {
-    border-block-end: var(--border-bottom-width) solid var(--color-border);
-  }
-
-  .announcement-bar__slider {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    position: relative;
-
-    @media screen and (max-width: 749px) {
-      grid-column: 1 / -1;
-    }
-  }
-
-  .announcement-bar__slides {
-    display: grid;
-    grid: [stack] auto / [stack] auto;
-    width: calc(100% - var(--button-size) * 2);
-    max-width: 680px;
-    margin-inline: auto;
-  }
-
-  .announcement-bar__slides > * {
-    grid-area: stack;
-  }
-
-  .announcement-bar__slide {
-    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
-    content-visibility: visible;
-
-    &[aria-hidden='true'] {
-      opacity: 0;
-      visibility: hidden;
-    }
-  }
-
-  .announcement-bar__slider slideshow-arrows {
-    padding: 0;
-    mix-blend-mode: normal;
-  }
-
-  .announcement-bar__slider slideshow-arrows .slideshow-control {
-    color: var(--color-foreground);
-  }
-
-  .announcement-bar__slider .slideshow-control {
-    display: flex;
-    padding: 0;
-    width: var(--button-size);
-    height: var(--button-size);
-    align-items: center;
-    justify-content: center;
-    opacity: 1;
-    animation: none;
-
-    @media screen and (min-width: 750px) {
-      --slideshow-control-offset: calc((var(--button-size) - var(--icon-size-xs)) / 2);
-
-      .section--page-width &.slideshow-control--previous {
-        transform: translateX(var(--slideshow-control-offset));
-      }
-    }
-  }
-
-  .announcement-bar__slider .slideshow-control .svg-wrapper {
-    width: var(--icon-size-xs);
-    height: var(--icon-size-xs);
-  }
-
-  .announcement-bar__slide {
-    place-content: center;
-  }
-
-  .announcement-bar__text:first-child {
-    margin: 0;
-  }
-
-  .announcement-bar__link {
-    position: absolute;
-    inset: 0;
-  }
+  .announcement-bar { border-block-end: var(--border-bottom-width) solid var(--color-border); }
 {% endstylesheet %}
 
 {% schema %}
