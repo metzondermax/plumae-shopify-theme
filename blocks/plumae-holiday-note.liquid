@@ -1,0 +1,53 @@
+{% liquid
+  assign pl_date = 'now' | date: '%Y%m%d' | plus: 0
+  assign pl_campaign = ''
+  if pl_date >= 20261108 and pl_date <= 20261125
+    assign pl_campaign = 'sinterklaas'
+  elsif pl_date >= 20261126 and pl_date <= 20261130
+    assign pl_campaign = 'blackfriday'
+  elsif pl_date >= 20261201 and pl_date <= 20261205
+    assign pl_campaign = 'sinterklaas'
+  elsif pl_date >= 20261206 and pl_date <= 20261226
+    assign pl_campaign = 'christmas'
+  elsif pl_date >= 20261227 and pl_date <= 20261231
+    assign pl_campaign = 'newyear'
+  endif
+
+  assign pl_product = closest.product
+%}
+
+{% if pl_campaign != blank and pl_product.handle == 'wat-eten-we-vandaag-basisset' %}
+  <aside class="pl-holiday-product-note" {{ block.shopify_attributes }}>
+    {% case pl_campaign %}
+      {% when 'sinterklaas' %}
+        <p class="pl-holiday-product-note__eyebrow">Sinterklaastip</p>
+        <p class="pl-holiday-product-note__title">Een cadeau voor het hele gezin</p>
+        <p class="pl-holiday-product-note__text">De basisset is €19,95 en wordt tijdelijk gratis verzonden in Nederland en België.</p>
+      {% when 'blackfriday' %}
+        <p class="pl-holiday-product-note__eyebrow">Black Friday</p>
+        <p class="pl-holiday-product-note__title">Basisset €19,95 + gratis verzending</p>
+        <p class="pl-holiday-product-note__text">Een kaartspel, recepten en maaltijdplanner in één.</p>
+      {% when 'christmas' %}
+        <p class="pl-holiday-product-note__eyebrow">Kerstcadeautip</p>
+        <p class="pl-holiday-product-note__title">Nog iets voor onder de kerstboom?</p>
+        <p class="pl-holiday-product-note__text">Een cadeau waar het hele gezin na de feestdagen nog iets aan heeft. Nu €19,95 + gratis verzending.</p>
+      {% when 'newyear' %}
+        <p class="pl-holiday-product-note__eyebrow">Op naar 2027</p>
+        <p class="pl-holiday-product-note__title">Begin het jaar zonder dagelijkse keuzestress</p>
+        <p class="pl-holiday-product-note__text">Kies samen in vijf minuten je weekmenu. Basisset €19,95 + gratis verzending.</p>
+    {% endcase %}
+  </aside>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Plumae: feestdagentip",
+  "tag": null,
+  "settings": [],
+  "presets": [
+    {
+      "name": "Plumae: feestdagentip"
+    }
+  ]
+}
+{% endschema %}
