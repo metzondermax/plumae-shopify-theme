@@ -1,3 +1,18 @@
+{% liquid
+  assign pl_date = 'now' | date: '%Y%m%d' | plus: 0
+  assign pl_holiday = ''
+  if pl_date >= 20261108 and pl_date <= 20261125
+    assign pl_holiday = 'sinterklaas'
+  elsif pl_date >= 20261126 and pl_date <= 20261130
+    assign pl_holiday = 'blackfriday'
+  elsif pl_date >= 20261201 and pl_date <= 20261205
+    assign pl_holiday = 'sinterklaas'
+  elsif pl_date >= 20261206 and pl_date <= 20261226
+    assign pl_holiday = 'christmas'
+  elsif pl_date >= 20261227 and pl_date <= 20261231
+    assign pl_holiday = 'newyear'
+  endif
+%}
 <!doctype html>
 <html
   {% if request.design_mode %}
@@ -46,6 +61,7 @@
       }
     {% endstyle %}
     {{ 'plumae-redesign.css' | asset_url | stylesheet_tag }}
+    {{ 'plumae-holiday.css' | asset_url | stylesheet_tag }}
     <script src="{{ 'plumae-redesign.js' | asset_url }}" defer></script>
     {%- render 'fonts' -%}
     {%- render 'scripts' -%}
@@ -59,7 +75,7 @@
     {{ content_for_header }}
   </head>
 
-  <body class="page-width-{{ settings.page_width }} card-hover-effect-{{ settings.card_hover_effect }}{% if template.name == 'index' %} plumae-home{% endif %}">
+  <body class="page-width-{{ settings.page_width }} card-hover-effect-{{ settings.card_hover_effect }}{% if template.name == 'index' %} plumae-home{% endif %}{% if pl_holiday != blank %} pl-holiday pl-holiday--{{ pl_holiday }}{% endif %}">
     {% render 'skip-to-content-link', href: '#MainContent', text: 'accessibility.skip_to_text' %}
 
     {% render 'chat-drawer' %}
