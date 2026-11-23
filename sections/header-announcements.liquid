@@ -1,23 +1,23 @@
 {% liquid
   assign pl_date = 'now' | date: '%Y%m%d' | plus: 0
   assign pl_campaign = ''
-  assign pl_message = 'Gratis verzending op de basisset in Nederland en België'
+  assign pl_message = 'Gratis verzending op de basisset binnen Nederland'
 
   if pl_date >= 20261108 and pl_date <= 20261125
     assign pl_campaign = 'sinterklaas'
-    assign pl_message = 'Cadeau voor het hele gezin • Basisset €19,95 + gratis verzending'
+    assign pl_message = 'Cadeau voor het hele gezin • Basisset €19,95 + gratis verzending in NL'
   elsif pl_date >= 20261126 and pl_date <= 20261130
     assign pl_campaign = 'blackfriday'
-    assign pl_message = 'Black Friday • Basisset €19,95 + gratis verzending'
+    assign pl_message = 'Black Friday • Basisset €19,95 + gratis verzending in NL'
   elsif pl_date >= 20261201 and pl_date <= 20261205
     assign pl_campaign = 'sinterklaas'
-    assign pl_message = 'Nog iets voor in de zak? • €19,95 + gratis verzending'
+    assign pl_message = 'Nog iets voor in de zak? • €19,95 + gratis verzending in NL'
   elsif pl_date >= 20261206 and pl_date <= 20261226
     assign pl_campaign = 'christmas'
-    assign pl_message = 'Voor onder de kerstboom • €19,95 + gratis verzending'
+    assign pl_message = 'Voor onder de kerstboom • €19,95 + gratis verzending in NL'
   elsif pl_date >= 20261227 and pl_date <= 20261231
     assign pl_campaign = 'newyear'
-    assign pl_message = 'Op naar 2027 zonder keuzestress • €19,95 + gratis verzending'
+    assign pl_message = 'Op naar 2027 zonder keuzestress • €19,95 + gratis verzending in NL'
   endif
 %}
 
