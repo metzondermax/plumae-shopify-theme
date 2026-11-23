@@ -2,16 +2,16 @@
   assign offer_scope = placement | default: 'product'
 %}
 {% if offer_scope == 'announcement' %}
-  <span data-pl-shipping-offer>Gratis verzending op de basisset in Nederland en België</span>
+  <span data-pl-shipping-offer>Gratis verzending op de basisset binnen Nederland</span>
   <span data-pl-shipping-default hidden>{{ fallback_text }}</span>
 {% elsif promo_product.handle == 'wat-eten-we-vandaag-basisset' %}
   {% if offer_scope == 'hero' %}
-    <p class="pl-redesign-hero__offer" data-pl-shipping-offer>Gratis verzending op de basisset in Nederland en België</p>
+    <p class="pl-redesign-hero__offer" data-pl-shipping-offer>Gratis verzending op de basisset binnen Nederland</p>
   {% else %}
     <aside class="pl-shipping-offer pl-shipping-offer--{{ offer_scope }}" data-pl-shipping-offer>
       <p class="pl-shipping-offer__eyebrow">Gratis verzending</p>
       <h3 class="pl-shipping-offer__title">Basisset voor {{ promo_product.price | money }} <strong>+ gratis verzending</strong></h3>
-      <p class="pl-shipping-offer__copy">Bestel de basisset met gratis verzending in Nederland en België. Je ziet de verzendkostenkorting bij het afrekenen.</p>
+      <p class="pl-shipping-offer__copy">Bestel de basisset met gratis verzending binnen Nederland. Je ziet de verzendkostenkorting bij het afrekenen.</p>
     </aside>
   {% endif %}
 {% endif %}
